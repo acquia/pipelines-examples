@@ -1,6 +1,7 @@
 {
     "name": "kieran.lal/buildstepstutorial",
     "description": "secret tutorial directory",
+    "minimum-stability": "dev",
     "authors": [
         {
             "name": "kieranacquia",
