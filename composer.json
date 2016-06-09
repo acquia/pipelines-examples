@@ -1,0 +1,11 @@
+{
+    "name": "kieran.lal/buildstepstutorial",
+    "description": "secret tutorial directory",
+    "authors": [
+        {
+            "name": "kieranacquia",
+            "email": "kieran@acquia.com"
+        }
+    ],
+    "require": {}
+}
