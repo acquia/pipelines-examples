@@ -1,0 +1,11 @@
+build-steps:
+  -
+    ldf:
+      type: script
+      script:
+        - 'composer install'
+        - 'find */. -type d -name .git -print0 | xargs -0 rm -rf'
+        - 'mkdir -p docroot/sites/default/files'
+        - 'touch docroot/sites/default/files/.gitkeep'
+        - 'mv settings.php docroot/sites/default/settings.php'
+        - 'mv services.yml docroot/sites/default/services.yml'
