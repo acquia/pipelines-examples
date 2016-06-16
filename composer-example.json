@@ -1,0 +1,129 @@
+{
+    "name": "acquia/lightning-project",
+    "description": "Project template for Drupal 8 sites built with the Lightning distribution.",
+    "type": "project",
+    "license": "GPL-2.0+",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require-dev": {
+        "behat/behat": "^3.1",
+        "drupal/drupal-extension": "^3.1",
+        "behat/mink": "~1.6",
+        "behat/mink-goutte-driver": "~1.2",
+        "jcalderonzumba/gastonjs": "~1.0.2",
+        "jcalderonzumba/mink-phantomjs-driver": "~0.3.1",
+        "mikey179/vfsStream": "~1.2",
+        "phpunit/phpunit": "~4.8",
+        "symfony/css-selector": "2.7.*"
+    },
+    "require": {
+        "composer/installers": "^1.0",
+        "drupal-composer/drupal-scaffold": "^1.2",
+        "cweagans/composer-patches": "dev-master",
+        "drupal/lightning": "8.1.00-rc5",
+        "drupal/df": "dev-8.x-lightning",
+        "acquia/buildstepstutorial": "dev-master#5cbf5cd448b0c83ca4abaf119909a1b5548afba3"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packagist.drupal-composer.org"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/balsama/df"
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "mjolnic/fontawesome-iconpicker",
+                "version": "1.2.0",
+                "source": {
+                    "url": "https://github.com/mjolnic/fontawesome-iconpicker",
+                    "type": "git",
+                    "reference": "origin/master"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "kenwheeler/slick",
+                "version": "1.5.0",
+                "source": {
+                    "url": "https://github.com/kenwheeler/slick",
+                    "type": "git",
+                    "reference": "origin/master"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "loopindex/ckeditor-track-changes",
+                "version": "dev-master",
+                "source": {
+                    "url": "https://github.com/loopindex/ckeditor-track-changes",
+                    "type": "git",
+                    "reference": "origin/master"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+               "name": "acquia/buildstepstutorial",
+               "version": "dev-master",
+               "source": {
+                 "url": "git@github.com:acquia/buildstepstutorial.git",
+                 "type": "git",
+                 "reference": "5cbf5cd448b0c83ca4abaf119909a1b5548afba3"
+               }
+            }
+        }
+    ],
+    "scripts": {
+      "post-install-cmd": [
+        "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
+        "Acquia\\Lightning\\ScriptHandler::deployLibraries"
+      ],
+      "post-update-cmd": [
+        "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
+        "Acquia\\Lightning\\ScriptHandler::deployLibraries"
+      ]
+    },
+    "config": {
+      "bin-dir": "bin/"
+    },
+    "autoload": {
+      "classmap": [
+        "scripts/ScriptHandler.php"
+      ]
+    },
+    "extra": {
+      "installer-paths": {
+        "docroot/core": [
+          "drupal/core"
+        ],
+        "docroot/modules/contrib/{$name}": [
+          "type:drupal-module"
+        ],
+        "docroot/profiles/contrib/{$name}": [
+          "type:drupal-profile"
+        ],
+        "docroot/themes/contrib/{$name}": [
+          "type:drupal-theme"
+        ],
+        "drush/contrib/{$name}": [
+          "type:drupal-drush"
+        ]
+      },
+      "patches": {
+            "drupal/core": {
+                "1356276 - inherited install profiles":
+                "https://www.drupal.org/files/issues/make_inherited_install-1356276-133.patch"
+            }
+      },
+      "enable-patching": true
+    }
+}
