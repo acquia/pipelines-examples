@@ -1,12 +1,25 @@
 {
-    "name": "kieran.lal/buildstepstutorial",
-    "description": "secret tutorial directory",
+    "name": "acquia/lightning-project",
+    "description": "Project template for Drupal 8 sites built with the Lightning distribution.",
+    "type": "project",
+    "license": "GPL-2.0+",
     "minimum-stability": "dev",
-    "authors": [
+    "prefer-stable": true,
+    "require": { 
+        "acquia/buildstepstutorial": "dev-master#d3e89d532a1771cb87920f617b3c21fecacc540f"
+    },
+    "repositories": [
         {
-            "name": "kieranacquia",
-            "email": "kieran@acquia.com"
+            "type": "package",
+            "package": {
+               "name": "acquia/buildstepstutorial",
+               "version": "dev-master",
+               "source": {
+                 "url": "git@github.com:acquia/buildstepstutorial.git",
+                 "type": "git",
+                 "reference": "d3e89d532a1771cb87920f617b3c21fecacc540f"
+               }
+            }
         }
-    ],
-    "require": {}
+    ]
 }
