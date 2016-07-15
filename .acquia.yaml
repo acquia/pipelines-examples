@@ -6,4 +6,4 @@ build-steps:
         # Run composer install to get access the private acquia buildstepstutorial repository with the secret.txt file
         - 'composer --no-interaction --quiet install'
         - 'cat secret.txt'
-        # In order to access the private repository you will need to use SSH keys configured in your github repo. Use the pipeline encrypt help for syntax
+        # In order to access the private repository you will need to use SSH keys configured in your Acquia github repo. Use the pipeline help encrypt for syntax
