@@ -1,0 +1,25 @@
+{
+    "name": "acquia/lightning-project",
+    "description": "Project template for Drupal 8 sites built with the Lightning distribution.",
+    "type": "project",
+    "license": "GPL-2.0+",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "acquia/buildstepstutorial": "dev-master#5cbf5cd448b0c83ca4abaf119909a1b5548afba3"
+    },
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+               "name": "acquia/buildstepstutorial",
+               "version": "dev-master",
+               "source": {
+                 "url": "git@github.com:acquia/buildstepstutorial.git",
+                 "type": "git",
+                 "reference": "5cbf5cd448b0c83ca4abaf119909a1b5548afba3"
+               }
+            }
+        }        
+    ]
+}
