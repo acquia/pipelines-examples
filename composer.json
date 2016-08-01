@@ -1,12 +1,14 @@
 {
-    "name": "kieran.lal/buildstepstutorial",
+    "name": "acquia/pipelinestutorial",
     "description": "secret tutorial directory",
-    "minimum-stability": "dev",
     "authors": [
         {
             "name": "kieranacquia",
             "email": "kieran@acquia.com"
         }
     ],
-    "require": {}
+    "dist": {
+        "url": "git@github.com:acquia/pipelinestutorial.git",
+        "type": "git"
+    }
 }
