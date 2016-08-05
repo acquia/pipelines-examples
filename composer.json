@@ -1,9 +1,4 @@
 {
-    "name": "acquia/pipelines301",
-    "description": "tutorial files for learning how to use pipelines",
-    "type": "project",
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "require": {
         "acquia/pipelinestutorial": "dev-pipelines301"
     },
