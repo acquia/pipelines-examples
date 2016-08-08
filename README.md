@@ -11,7 +11,7 @@ contains three files:
 * A .acquia.yaml file which simply runs "composer install", thus attempting to
 pull in the branch of the private repository.
 * id\_pipelinestutorial, a private SSH key without a passphrase that has read
-  access to this repository.
+  access to this repository. Normally, one would never commit an unencrypted SSH key to a repository. We did it here to ensure you have access to an SSH key that can read this repository in order to perform the steps of this demo. This repository only contains sample code, and this key can only read this repository, so there is no security risk.
 
 To make this work, you will need to add an SSH key to the .acquia.yaml file
 that you copy from here into your Cloud repository. The steps are:
