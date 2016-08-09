@@ -1,6 +1,6 @@
 The purpose of the 301 tutorial is demonstrate the ability to use composer to include a Drupal module from a private repository into your build artifact. Because the repository is private, this requires adding an SSH key with access to the repository to your Pipelines job. 
 
-This branch contains three files:
+This branch contains:
 
 * A composer.json that requires the "my_company/my_module" package, which is a Drupal module, from the private-pipelines301 branch of this repository. Because this is a private repository, Composer running on Pipelines will not have access to it without proper authentication with an  SSH key.
 * A .acquia.yaml file which simply runs "composer install", thus attempting to pull in the branch of the private repository.
