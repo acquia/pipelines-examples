@@ -3,7 +3,4 @@ build-steps:
     pipeline:
       type: script
       script:
-        # Run composer install to get access the private Acquia Pipelines tutorial repository with the secret.txt file
-        - 'composer --no-interaction --quiet install'
-        - 'cat vendor/acquia/pipelinestutorial/secret.txt'
-        # In order to access the private repository you will need to use SSH keys configured in your Acquia github repo. Use the command pipeline help encrypt for instructions.
+        - 'composer install'
