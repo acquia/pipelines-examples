@@ -11,7 +11,7 @@ The steps are:
 
 * Copy the files from this branch into your Cloud repository.
 * Use the "pipeline encrypt" command to add your SSH key to the .acquia.yaml
-file: ```cat id\_pipelinestutorial | pipeline encrypt - --add ssh-keys.my-key```
+file: ```cat id_pipelinestutorial | pipeline encrypt - --add ssh-keys.my-key```
 * Commit composer.json and .acquia.yaml and push them to your Cloud repository. (You do not need to commit id\_pipelinestutorial; you've added an encrypted copy of it to .acquia.yaml.)
 * Run "pipeline start".
 
