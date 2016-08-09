@@ -1,6 +1,6 @@
 {
     "require": {
-        "acquia/pipelinestutorial": "dev-private-pipelines301"
+        "my_company/my_module": "dev-private-pipelines301"
     },
     "repositories": [
         {
