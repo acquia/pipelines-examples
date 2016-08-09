@@ -1,0 +1,9 @@
+version: 1.0.0
+
+events:
+  build:
+    steps:
+      - get-core:
+          type: script
+          script:
+            - composer install --no-interaction --no-progress
