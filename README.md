@@ -23,12 +23,23 @@ file that you copy from here into your Cloud repository.  The steps are:
 
 * Copy the files from this branch into your Cloud repository.
 * Use the "pipelines encrypt" command to add the SSH key to the
-acquia-pipelines.yml file: ```cat ssh.key | pipelines encrypt - --add
-ssh-keys.my-key```
+acquia-pipelines.yml file:
+```
+  cat ssh.key | pipelines encrypt - --add ssh-keys.my-key
+```
 * Commit composer.json and acquia-pipelines.yml and push them to your Cloud
-  repository. (You do not need to commit ssh.key; you've added an encrypted
+repository.
+```
+  git add composer.json acquia-pipelines.yml
+  git commit -m 'demo files'
+  git push origin master
+```
+  (You do not need to commit ssh.key; you've added an encrypted
   copy of it to acquia-pipelines.yml.)
-* Run "pipelines start".
+* Start a Pipelines job.
+```
+   pipelines start
+```
 
 When the job succeeds, run "pipelines logs" and you should see Composer pulling
 in the my_company/my_module package:
