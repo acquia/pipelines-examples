@@ -41,8 +41,13 @@ repository.
    pipelines start
 ```
 
-When the job succeeds, run "pipelines logs" and you should see Composer pulling
-in the my_company/my_module package:
+If start the job before adding the SSH key, the job will fail and the logs will show a Composer error:
+
+```
+	Failed to clone the git@github.com:acquia/pipelinestutorial.git repository, try running in interactive mode so that you can enter your GitHub credentials
+```
+
+When the job succeeds, the job logs will show Composer pulling in the my_company/my_module package:
 
 ```
 	Updating dependencies (including require-dev)
