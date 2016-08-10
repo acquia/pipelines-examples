@@ -1,6 +1,8 @@
-build-steps:
-  -
-    pipeline:
-      type: script
-      script:
-        - 'composer install'
+version: 1.0.0
+events:
+  build:
+    steps:
+      - composer:
+          type: script
+          script:
+            - composer install
