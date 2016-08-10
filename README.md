@@ -22,7 +22,7 @@ To make this work, you will need to add the SSH key to the acquia-pipelines.yml
 file that you copy from here into your Cloud repository.  The steps are:
 
 * Copy the files from this branch into your Cloud repository.
-* Use the "pipeline encrypt" command to add your SSH key to the
+* Use the "pipeline encrypt" command to add the SSH key to the
 acquia-pipelines.yml file: ```cat ssh.key | pipeline encrypt - --add
 ssh-keys.my-key```
 * Commit composer.json and acquia-pipelines.yml and push them to your Cloud
