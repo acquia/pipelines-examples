@@ -1,5 +1,5 @@
 The purpose of the 301 tutorial is demonstrate the ability to use composer to
-include a Drupal module from a private repository into your build
+include a [Drupal module from a private repository](https://github.com/acquia/pipelinestutorial/tree/private-pipelines301) into your build
 artifact. Because the repository is private, this requires adding an SSH key
 with access to the repository to your Pipelines job.
 
