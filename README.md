@@ -28,6 +28,7 @@ file that you copy from here into your Cloud repository.  To get the files, clon
 
 The steps are:
 
+* Clear out a branch in your Acquia Cloud repo so that only the tutorial files are included.
 * Copy the files from this branch into your Cloud repository.
 * Use the ```pipelines encrypt``` command to add the SSH key to the
 acquia-pipelines.yml file:
