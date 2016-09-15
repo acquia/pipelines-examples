@@ -6,4 +6,5 @@ events:
       - get-core:
           type: script
           script:
-            - composer install --no-interaction --no-progress
+            # Build non-development composer packages.
+            - composer install --no-interaction --no-dev --optimize-autoloader
