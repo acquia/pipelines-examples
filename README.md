@@ -8,12 +8,12 @@ This repository contains example code for a series of tutorials for Acquia Pipel
 
 The examples are:
 
-* **[pipelines101](https://github.com/acquia/pipelines-examples/tree/pipelines101)** - "Hello, World"; the simplest possible Pipelines job, just to get started.
-* **[pipelines201](https://github.com/acquia/pipelines-examples/tree/pipelines201)** - Build a Drupal site using the Acquia Lightning distribution using Composer.
-* **[pipelines301](https://github.com/acquia/pipelines-examples/tree/pipelines301)** - Access a private respository using Composer by safely adding an SSH key to your Pipelines YAML file.
-* **[pipelines401](https://github.com/acquia/pipelines-examples/tree/pipelines401)** - Safely store secret data such as credentials in your Pipelines YAML file to be accessible to your job via an environment variable.
-* **[pipelines501](https://github.com/acquia/pipelines-examples/tree/pipelines501)** - Start a web and MySQL server, and run Behat tests against your site, all within your Pipelines job.
-* **[pipelines601](https://github.com/acquia/pipelines-examples/tree/pipelines601)** - Install node version manner and node package manager
+* **[example101](https://github.com/acquia/pipelines-examples/tree/pipelines101)** - "Hello, World"; the simplest possible Pipelines job, just to get started.
+* **[example201](https://github.com/acquia/pipelines-examples/tree/pipelines201)** - Build a Drupal site using the Acquia Lightning distribution using Composer.
+* **[example301](https://github.com/acquia/pipelines-examples/tree/pipelines301)** - Access a private respository using Composer by safely adding an SSH key to your Pipelines YAML file.
+* **[example401](https://github.com/acquia/pipelines-examples/tree/pipelines401)** - Safely store secret data such as credentials in your Pipelines YAML file to be accessible to your job via an environment variable.
+* **[example501](https://github.com/acquia/pipelines-examples/tree/pipelines501)** - Start a web and MySQL server, and run Behat tests against your site, all within your Pipelines job.
+* **[example601](https://github.com/acquia/pipelines-examples/tree/pipelines601)** - Install node version manner and node package manager
 
 
 ### Contents
