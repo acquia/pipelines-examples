@@ -4,7 +4,7 @@
 * [Watch video](https://drive.google.com/open?id=0BwBnqz3kkaPuQXIwcWVsSER2ODA)
 
 The purpose of the 301 tutorial is demonstrate the ability to use composer to
-include a [Drupal module from a private repository](https://github.com/acquia/pipelinestutorial/tree/private-pipelines301) into your build
+include a [Drupal module from a private repository](https://github.com/acquia/pipelines-examples-private) into your build
 artifact. Because the repository is private, this requires adding an SSH key
 with access to the repository to your Pipelines job.
 
@@ -52,13 +52,13 @@ repository.
 If you start the job before adding the SSH key, the job will fail and the logs will show a Composer error:
 
 ```
-	Failed to clone the git@github.com:acquia/pipelinestutorial.git repository, try running in interactive mode so that you can enter your GitHub credentials
+	Failed to clone the git@github.com:acquia/pipelines-examples-private.git repository, try running in interactive mode so that you can enter your GitHub credentials
 ```
 
 When the job succeeds, the job logs will show Composer pulling in the my_company/my_module package:
 
 ```
 	Updating dependencies (including require-dev)
-	  - Installing my_company/my_module (dev-private-pipelines301 801f5a4)
+	  - Installing my_company/my_module (dev-master 801f5a4)
 	    Cloning 801f5a4cea644ee9257c8085f4d9c6f573568d2e
 ```
