@@ -1,0 +1,9 @@
+version: 1.0.0
+events:
+  build:
+    steps:
+      - js:
+          type: script
+          script:
+            - nvm install node
+            - npm install

@@ -1,0 +1,11 @@
+{
+    "require": {
+        "my_company/my_module": "dev-master"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:acquia/pipelines-examples-private.git"
+        }
+    ]
+}

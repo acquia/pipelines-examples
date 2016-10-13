@@ -1,0 +1,9 @@
+version: 1.0.0
+events:
+  build:
+    steps:
+      - hello:
+          type: script
+          script:
+            - mkdir docroot
+            - echo "Hello, Pipelines!" > docroot/hello.txt
