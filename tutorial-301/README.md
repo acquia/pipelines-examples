@@ -8,7 +8,7 @@ include a [Drupal module from a private repository](https://github.com/acquia/pi
 artifact. Because the repository is private, this requires adding an SSH key
 with access to the repository to your Pipelines job.
 
-This branch contains:
+This folder contains:
 
 * A composer.json that requires the "my_company/my_module" package, which is a
   Drupal module, from the private-pipelines301 branch of this
@@ -24,12 +24,12 @@ This branch contains:
   there is no security risk.
 
 To make this work, you will need to add the SSH key to the acquia-pipelines.yml
-file that you copy from here into your Cloud repository.  To get the files, clone this repository and checkout the pipelines301 branch, or you can [download the ZIP file here](http://tutorials.pipeline-dev.services.acquia.io/pipelinestutorial301.zip).
+file that you copy from here into your Cloud repository.  To get the files, clone this repository and look in the tutorial-301 folder, or you can [download the ZIP file here](http://tutorials.pipeline-dev.services.acquia.io/pipelinestutorial301.zip).
 
 The steps are:
 
 * Clear out a branch in your Acquia Cloud repo so that only the tutorial files are included.
-* Copy the files from this branch into your Cloud repository.
+* Copy the files from this folder into your Cloud repository.
 * Use the ```pipelines encrypt``` command to add the SSH key to the
 acquia-pipelines.yml file:
 ```

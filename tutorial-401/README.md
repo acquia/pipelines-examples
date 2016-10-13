@@ -7,12 +7,12 @@ This 401 tutorial shows you how to safely store encrypted data in the Pipelines 
 
 You will use the ```pipelines encrypt``` command and give it a variable name and value to be encrypted. The sample YAML file creates a file ```secret.txt``` in your build artifact containing the decrypted value.
 
-To get the files, clone this repository and checkout the pipelines401 branch, or you can [download the ZIP file here](http://tutorials.pipeline-dev.services.acquia.io/pipelinestutorial401.zip).
+To get the files, clone this repository and look in the tutorial-401 folder, or you can [download the ZIP file here](http://tutorials.pipeline-dev.services.acquia.io/pipelinestutorial401.zip).
 
 The steps are:
 
 * Clear out a branch in your Acquia Cloud repo so that only the tutorial files are included.
-* Copy the files from this branch into your Cloud repository.
+* Copy the files from this folder into your Cloud repository.
 * Use the ```pipelines encrypt``` command to add the SSH key to the
 acquia-pipelines.yml file:
 ```
