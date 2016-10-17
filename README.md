@@ -1,4 +1,4 @@
-# Pipeline Examples
+# Pipelines Examples
 
 This repository contains example code for a series of tutorials for Acquia Pipelines.  Each tutorial is in its own branch.  Each branch contains the sample code for that tutorial, plus a README that includes:
 
