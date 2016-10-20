@@ -1,21 +1,29 @@
 # Pipelines Examples
 
-This repository contains example code for a series of tutorials for Acquia Pipelines.  Each tutorial is in its own branch.  Each branch contains the sample code for that tutorial, plus a README that includes:
+This repository contains example code and tutorials for Acquia Pipelines.
+
+### Examples
+* [Basic pipeline](https://github.com/acquia/pipelines-examples/tree/master/basic-pipeline)
+* [Composer based pipeline](https://github.com/acquia/pipelines-examples/tree/master/composer-pipeline)
+* [Acquia BLT](https://github.com/acquia/blt/blob/8.x/scripts/pipelines/acquia-pipelines.yml)
+* Further examples welcome via Pull Request
+
+#### Tutorials
+Each folder contains the sample code for that tutorial, plus a README that includes:
 
 * additional information and/or specific instructions,
 * a link to a ZIP file containing all the same code, for easy access, and
 * a link to a video that explains the tutorial and shows how it works.
 
-The examples are:
+##### The examples are:
+* **[tutorial-101](https://github.com/acquia/pipelines-examples/tree/tutorial-101)** - "Hello, World" the simplest possible Pipelines job, just to get started.
+* **[tutorial-201](https://github.com/acquia/pipelines-examples/tree/tutorial-201)** - Build a Drupal site using the Acquia Lightning distribution using Composer.
+* **[tutorial-301](https://github.com/acquia/pipelines-examples/tree/tutorial-301)** - Access a private repository using Composer by safely adding an SSH key to your Pipelines YAML file.
+* **[tutorial-401](https://github.com/acquia/pipelines-examples/tree/tutorial-401)** - Safely store secret data such as credentials in your Pipelines YAML file to be accessible to your job via an environment variable.
+* **[tutorial-501](https://github.com/acquia/pipelines-examples/tree/tutorial-501)** - Start a web and MySQL server, and run Behat tests against your site, all within your Pipelines job.
+* **[tutorial-601](https://github.com/acquia/pipelines-examples/tree/tutorial-601)** - Install node version manner and node package manager
 
-* **[example101](https://github.com/acquia/pipelines-examples/tree/example101)** - "Hello, World"; the simplest possible Pipelines job, just to get started.
-* **[example201](https://github.com/acquia/pipelines-examples/tree/example201)** - Build a Drupal site using the Acquia Lightning distribution using Composer.
-* **[example301](https://github.com/acquia/pipelines-examples/tree/example301)** - Access a private respository using Composer by safely adding an SSH key to your Pipelines YAML file.
-* **[example401](https://github.com/acquia/pipelines-examples/tree/example401)** - Safely store secret data such as credentials in your Pipelines YAML file to be accessible to your job via an environment variable.
-* **[example501](https://github.com/acquia/pipelines-examples/tree/example501)** - Start a web and MySQL server, and run Behat tests against your site, all within your Pipelines job.
-* **[example601](https://github.com/acquia/pipelines-examples/tree/example601)** - Install node version manner and node package manager
-
-
-### Contents
-* [Basic pipeline](https://github.com/acquia/pipelines-examples/tree/master/basic-pipeline)
-* [Composer based pipeline](https://github.com/acquia/pipelines-examples/tree/master/composer-pipeline)
+### See also
+* [Pipelines documentation](docs.acquia.com/pipelines)
+* [Introduction to Pipelines]( https://dev.acquia.com/blog/acquia-pipelines-build-test-and-deployment-automation-for-acquia-cloud/10/08/2016/16381)
+* [Request an invite to the Beta](https://dev.acquia.com/request-invite-acquia-pipelines)

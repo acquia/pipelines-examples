@@ -1,0 +1,9 @@
+version: 1.0.0
+events:
+  build:
+    steps:
+      - composer:
+          type: script
+          script:
+            # Add an encrypted variable named secret to this file with pipelines client. Use pipeline help encrypt for example syntax.
+            - echo $secret > secret.txt
