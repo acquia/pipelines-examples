@@ -5,7 +5,8 @@
 
 This tutorial demonstrates the installation requirements and set-up for Acquia pipelines.
 
-* [Watch demo video](https://drive.google.com/open?id=0BwBnqz3kkaPuUjRQTURmaE5Pczg)
+* [Watch demo video part 1](https://player.vimeo.com/video/176788095)
+* [Watch demo video part 2](https://player.vimeo.com/video/184398691)
 
 This tutorial demonstrates the simplest possible usage of Acquia Pipelines. The Pipelines YAML file simply creates a plain-text file,
 hello.txt, containing the text "Hello, Pipelines."
