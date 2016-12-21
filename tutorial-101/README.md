@@ -1,7 +1,6 @@
 # Hello, Pipelines
 
 * [Download files](http://tutorials.pipeline-dev.services.acquia.io/pipelinestutorial101.zip)
-* [Watch installation video](https://drive.google.com/a/acquia.com/file/d/0BwBnqz3kkaPuV09pNC1iakRMUTg)
 
 This tutorial demonstrates the installation requirements and set-up for Acquia pipelines.
 
