@@ -1,7 +1,7 @@
 # Accessing private repositories
 
 * [Download files](http://tutorials.pipeline-dev.services.acquia.io/pipelinestutorial301.zip)
-* [Watch video](https://drive.google.com/open?id=0BwBnqz3kkaPuQXIwcWVsSER2ODA)
+* [Watch video](https://player.vimeo.com/video/184398695)
 
 The purpose of the 301 tutorial is demonstrate the ability to use composer to
 include a [Drupal module from a private repository](https://github.com/acquia/pipelines-examples-private) into your build
