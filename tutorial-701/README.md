@@ -1,7 +1,5 @@
 # Deploying to on-demand environments
 
-* [TODO Download ZIP](http://tutorials.pipeline-dev.services.acquia.io/pipelinestutorial501.zip)
-
 This tutorial demonstrates how to automatically deploy feature branches and (if
 you use GitHub) pull requests to Acquia Cloud On Demand Environments (ODEs).
 
@@ -14,7 +12,6 @@ The steps are:
 ```
 * Copy the `acquia-pipelines.yaml` file from this tutorial into your Git repo (now on the pipelines-deploy branch). You can:
   * cut and paste the [contents of the file](https://raw.githubusercontent.com/acquia/pipelines-examples/master/tutorial-701/acquia-pipelines.yaml), or
-  * [download a ZIP file](http://tutorials.pipeline-dev.services.acquia.io/pipelinestutorial701.zip) containing the file, or
   * clone this repository and look in the tutorial-701 folder.
 * Add your Acquia Cloud credentials to `acquia-pipelines.yaml` in your repo:
   * Paste your n3_key from ~/.acquia/pipelines/credentials after `N3_KEY`, and
