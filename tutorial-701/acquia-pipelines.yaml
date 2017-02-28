@@ -5,8 +5,7 @@ variables:
     # Paste your n3_key from ~/.acquia/pipelines/credentials on the next line.
     N3_KEY: 'your key'
     # Run this command to securely add your Cloud API secret key:
-    #
-    # awk '/n3_secret/ { printf("%s", $2) }' ~/.acquia/pipelines/credentials | pipelines encrypt - --add variables.global.N3_SECRET
+    #   awk '/n3_secret/ { printf("%s", $2) }' ~/.acquia/pipelines/credentials | pipelines encrypt - --add variables.global.N3_SECRET
     PIPELINES_DEPLOY_URL: https://github.com/acquia/pipelines-examples/releases/download/deploy.1/pipelines-deploy
     PIPELINES_DEPLOY_TOOL: $HOME/pipelines-deploy
 
@@ -16,7 +15,7 @@ events:
       # If you have build instructions, put them here. They are not required.
       - build_site:
           script:
-            - echo "Put your build instructions here."
+            - echo "Put your build instructions, if any, here."
 
       # Deploy the build artifact to a Cloud on-demand environment.
       - deploy:
