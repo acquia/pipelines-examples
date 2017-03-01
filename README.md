@@ -22,6 +22,7 @@ Each folder contains the sample code for that tutorial, plus a README that inclu
 * **[tutorial-401](https://github.com/acquia/pipelines-examples/tree/master/tutorial-401)** - Safely store secret data such as credentials in your Pipelines YAML file to be accessible to your job via an environment variable.
 * **[tutorial-501](https://github.com/acquia/pipelines-examples/tree/master/tutorial-501)** - Start a web and MySQL server, and run Behat tests against your site, all within your Pipelines job.
 * **[tutorial-601](https://github.com/acquia/pipelines-examples/tree/master/tutorial-601)** - Install node version manner and node package manager
+* **[tutorial-701](https://github.com/acquia/pipelines-examples/tree/master/tutorial-701)** - Deploy builds, feature branches, and GitHub pull requests to Acquia Cloud on-demand environments.
 
 ### See also
 * [Pipelines documentation](https://docs.acquia.com/pipelines)
