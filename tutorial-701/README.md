@@ -42,9 +42,9 @@ To use this tutorial, the steps are:
 * Copy the `acquia-pipelines.yaml` file from this tutorial into your Git repo (now on the pipelines-deploy branch). You can:
   * cut and paste the [contents of the file](https://raw.githubusercontent.com/acquia/pipelines-examples/master/tutorial-701/acquia-pipelines.yaml), or
   * clone this repository and look in the tutorial-701 folder.
-* Add your Acquia Cloud credentials to `acquia-pipelines.yaml` in your repo:
-  * Paste your n3_key from ~/.acquia/pipelines/credentials after `N3_KEY`, and
-  * run `awk '/n3_secret/ { printf("%s", $2) }' ~/.acquia/pipelines/credentials | pipelines encrypt - --add variables.global.N3_SECRET` to securely add your secret key.
+* Add your Acquia Cloud credentials to `acquia-pipelines.yaml` in your repo. You can [create a new set of Cloud tokens](https://cloud.acquia.com/app/profile/tokens) just for this purpose, or use the existing tokens in ` ~/.acquia/pipelines/credentials`.  Either way:
+  * paste your n3_key into the YAML file after `N3_KEY`, and
+  * run `echo -n [your n3_secret] | pipelines encrypt - --add variables.global.N3_SECRET` to securely add your secret key.
 * Commit `acquia-pipelines.yaml` to the repo and push it:
 ```
   git add acquia-pipelines.yaml
