@@ -20,7 +20,7 @@ events:
       # Deploy the build artifact to a Cloud on-demand environment.
       - deploy:
           script:
-            - curl -o $PIPELINES_DEPLOY_TOOL "$PIPELINES_DEPLOY_URL" && chmod 755 $PIPELINES_DEPLOY_TOOL
+            - curl -o $PIPELINES_DEPLOY_TOOL -L "$PIPELINES_DEPLOY_URL" && chmod 755 $PIPELINES_DEPLOY_TOOL
             - $PIPELINES_DEPLOY_TOOL
 
   merge:
@@ -28,5 +28,5 @@ events:
       # When a GitHub pull request is merged, this deletes the coresponding ODE.
       - deploy:
           script:
-            - curl -o $PIPELINES_DEPLOY_TOOL "$PIPELINES_DEPLOY_URL" && chmod 755 $PIPELINES_DEPLOY_TOOL
+            - curl -o $PIPELINES_DEPLOY_TOOL -L "$PIPELINES_DEPLOY_URL" && chmod 755 $PIPELINES_DEPLOY_TOOL
             - $PIPELINES_DEPLOY_TOOL
