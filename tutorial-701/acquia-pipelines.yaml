@@ -15,8 +15,8 @@ events:
       # If you have build instructions, put them here. They are not required.
       - build_site:
           script:
-            - touch index.html
-            - echo "Pipelines examples 701. You successfully deployed your build to an ODE" > index.html
+            - touch docroot/index.html
+            - echo "Pipelines examples 701. You successfully deployed your build to an ODE" > docroot/index.html
 
       # Deploy the build artifact to a Cloud on-demand environment.
       - deploy:
