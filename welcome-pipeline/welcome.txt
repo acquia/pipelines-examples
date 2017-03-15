@@ -1,0 +1,34 @@
+
+
+
+
+                                 Welcome to
+[36m
+          __________.__              .__  .__
+          \______   \__|_____   ____ |  | |__| ____   ____   ______
+           |     ___/  \____ \_/ __ \|  | |  |/    \_/ __ \ /  ___/
+           |    |   |  |  |_> >  ___/|  |_|  |   |  \  ___/ \___ \
+           |____|   |__|   __/ \___  >____/__|___|  /\___  >____  >
+                       |__|        \/             \/     \/     \/[39m
+
+
+Pipelines could not find a [32macquia-pipelines.yaml[39m in your repository's root directory.
+Here is an example [32macquia-pipelines.yaml[39m file you could use:
+
+[33mversion: 1.0.0
+events:
+  build:
+    steps:
+      - build-something:
+          script:
+            - 'echo "Building my code"'
+      - test-something:
+          script:
+            - 'echo "Testing my code"'[39m
+
+[32mSome other examples of popular configurations can be found at:[39m
+https://github.com/acquia/pipelines-examples
+
+
+[32mYou can find more information about Pipelines in our docs:[39m
+https://docs.acquia.com/pipelines
