@@ -19,8 +19,15 @@ Cloud environments. When the Deploy tool runs during a "build" event:
 * Acquia Cloud will then deploy the build branch to the selected
   environment.
 
-When the Deploy tool runs during a "merge" event, which is triggered
+When the Deploy tool runs during a "pr-merged" event, which is triggered
 when a GitHub pull request is merged to its base branch:
+
+* The Deploy tool deletes any Cloud on-demand environments deploying
+  the build branch, pipelines-build-pr-N (for GitHub pull request #N),
+  for that pull request.
+
+When the Deploy tool runs during a "pr-closed" event, which is triggered
+when a GitHub pull request is closed without being merged to its base branch:
 
 * The Deploy tool deletes any Cloud on-demand environments deploying
   the build branch, pipelines-build-pr-N (for GitHub pull request #N),
