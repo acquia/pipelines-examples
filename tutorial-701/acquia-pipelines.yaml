@@ -18,8 +18,7 @@ events:
       # Deploy the build artifact to a Cloud on-demand environment.
       - deploy:
           script:
-            - curl -L -s -o $PIPELINES_DEPLOY_TOOL "$PIPELINES_DEPLOY_URL" && chmod 755 $PIPELINES_DEPLOY_TOOL
-            - $PIPELINES_DEPLOY_TOOL
+            - pipelines-deploy
 
   # When a GitHub pull request is merged, this deletes the coresponding ODE.
   pr-merged:
