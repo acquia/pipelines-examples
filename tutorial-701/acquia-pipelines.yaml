@@ -6,8 +6,6 @@ variables:
     N3_KEY: 'your key'
     # Run this command to securely add your Cloud API secret key:
     #   awk '/n3_secret/ { printf("%s", $2) }' ~/.acquia/pipelines/credentials | pipelines encrypt - --add variables.global.N3_SECRET
-    PIPELINES_DEPLOY_URL: https://github.com/acquia/pipelines-examples/releases/download/deploy-latest/pipelines-deploy
-    PIPELINES_DEPLOY_TOOL: $HOME/pipelines-deploy
 
 events:
   build:
@@ -21,13 +19,18 @@ events:
       # Deploy the build artifact to a Cloud on-demand environment.
       - deploy:
           script:
-            - curl -L -s -o $PIPELINES_DEPLOY_TOOL "$PIPELINES_DEPLOY_URL" && chmod 755 $PIPELINES_DEPLOY_TOOL
-            - $PIPELINES_DEPLOY_TOOL
+            - pipelines-deploy
 
-  merge:
+  # When a GitHub pull request is merged, this deletes the coresponding ODE.
+  pr-merged:
     steps:
-      # When a GitHub pull request is merged, this deletes the coresponding ODE.
       - deploy:
           script:
-            - curl -L -s -o $PIPELINES_DEPLOY_TOOL "$PIPELINES_DEPLOY_URL" && chmod 755 $PIPELINES_DEPLOY_TOOL
-            - $PIPELINES_DEPLOY_TOOL
+            - pipelines-deploy
+
+  # When a GitHub pull request is closed, this deletes the coresponding ODE.
+  pr-closed:
+    steps:
+      - deploy:
+          script:
+            - pipelines-deploy
