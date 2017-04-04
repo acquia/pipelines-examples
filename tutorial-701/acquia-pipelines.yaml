@@ -13,6 +13,7 @@ events:
       - deploy:
           script:
             - pipelines-deploy
+
   # When a GitHub pull request is merged, this deletes the coresponding ODE.
   pr-merged:
     steps:
