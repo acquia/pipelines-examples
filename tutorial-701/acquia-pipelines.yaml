@@ -1,12 +1,5 @@
 version: 1.0.0
 
-variables:
-  global:
-    # Paste your n3_key from ~/.acquia/pipelines/credentials on the next line.
-    N3_KEY: 'your key'
-    # Run this command to securely add your Cloud API secret key:
-    #   awk '/n3_secret/ { printf("%s", $2) }' ~/.acquia/pipelines/credentials | pipelines encrypt - --add variables.global.N3_SECRET
-
 events:
   build:
     steps:
