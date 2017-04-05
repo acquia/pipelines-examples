@@ -66,4 +66,4 @@ To use this tutorial, the steps are:
   git merge pipelines-deploy
   git branch -d pipelines-deploy
 ```
-* Now, all of your new feature branche and pull requests will get their own Cloud environment.
+* Now, all of your new feature branch and pull requests will get their own Cloud environment.
