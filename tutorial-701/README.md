@@ -4,6 +4,7 @@ This tutorial demonstrates how to automatically deploy feature
 branches and (if you use GitHub) pull requests to Acquia Cloud On
 Demand Environments (ODEs) using the Pipelines Deploy tool.
 
+# How it works
 The Pipelines Deploy tool provides integration between Pipelines and
 Cloud environments. When the Deploy tool runs during a "build" event:
 
@@ -39,6 +40,7 @@ that is updated for every build of that branch performed by Pipelines,
 and on-demand environments for pull requests are deleted automatically
 when the pull request is merged.
 
+# How to use it
 To use this tutorial, the steps are:
 
 * Create a feature branch in your Git repo.  Since this tutorial demonstrates Pipelines deployment, call the branch pipelines-deploy:
