@@ -4,6 +4,9 @@ This tutorial demonstrates how to automatically deploy feature
 branches and (if you use GitHub) pull requests to Acquia Cloud On
 Demand Environments (ODEs) using the Pipelines Deploy tool.
 
+# Acquia Cloud CD beta has ended
+The Acquia Cloud CD which integrates Pipelines with CD environments has ended. The pipelines beta continues. For customers who would like to use CDEs please reach out to your account manager to request purchasing CDEs.
+
 # How it works
 The Pipelines Deploy tool provides integration between Pipelines and
 Cloud environments. When the Deploy tool runs during a "build" event:
