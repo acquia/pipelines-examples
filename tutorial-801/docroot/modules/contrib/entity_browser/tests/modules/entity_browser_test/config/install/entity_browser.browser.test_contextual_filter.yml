@@ -1,0 +1,31 @@
+uuid: 9a607a9b-d72e-412c-b4b0-8ea8c4018817
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.test_contextual_filter
+  module:
+    - views
+name: test_contextual_filter
+label: 'Test contextual filter'
+display: iframe
+display_configuration:
+  width: '650'
+  height: '500'
+  link_text: 'Select entities'
+  auto_open: false
+selection_display: no_display
+selection_display_configuration: {  }
+widget_selector: single
+widget_selector_configuration: {  }
+widgets:
+  1868bb2c-8c45-48f4-b2ca-8c2902dfd15b:
+    settings:
+      view: test_contextual_filter
+      view_display: entity_browser_1
+      submit_text: 'Select entities'
+      auto_select: false
+    uuid: 1868bb2c-8c45-48f4-b2ca-8c2902dfd15b
+    weight: 1
+    label: view
+    id: view

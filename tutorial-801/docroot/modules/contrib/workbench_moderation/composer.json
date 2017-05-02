@@ -1,0 +1,14 @@
+{
+  "name": "drupal/workbench_moderation",
+  "type": "drupal-module",
+  "description": "Provides moderation states for content",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "http://drupal.org/project/workbench_moderation",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "http://drupal.org/project/issues/workbench_moderation",
+    "source": "http://cgit.drupalcode.org/workbench_moderation"
+  },
+  "require": { }
+}

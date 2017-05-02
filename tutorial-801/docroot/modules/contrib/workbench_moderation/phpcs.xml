@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<ruleset name="Drupal 8">
+    <description>Coding standard for Drupal 8 module code.</description>
+
+    <file>.</file>
+
+    <!--
+    Using the Drupal "sniffs" requires downloading the "Coder" module and
+    telling PHP_CodeSniffer where to find the new sniffs.
+    @see https://www.drupal.org/node/1419988
+    -->
+    <rule ref="Drupal"></rule>
+    <rule ref="DrupalPractice"></rule>
+
+    <rule ref="Generic.Arrays.DisallowLongArraySyntax.Found">
+      <type>warning</type>
+    </rule>
+
+</ruleset>

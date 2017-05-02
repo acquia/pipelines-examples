@@ -1,0 +1,50 @@
+# @file
+# .travis.yml - Drupal for Travis CI Integration
+#
+# Template provided by https://github.com/LionsAd/drupal_ti.
+#
+# Based for simpletest upon:
+#   https://github.com/sonnym/travis-ci-drupal-module-example
+
+language: php
+sudo: false
+
+cache:
+  directories:
+    - $HOME/.composer/cache
+
+php:
+  - 5.5
+  - 5.6
+  - 7
+  - hhvm
+
+matrix:
+  fast_finish: true
+
+branches:
+  only:
+    - "8.x-1.x"
+
+env:
+  global:
+    # add composer's global bin directory to the path
+    # see: https://github.com/drush-ops/drush#install---composer
+    - PATH="$PATH:$HOME/.composer/vendor/bin"
+
+before_install:
+  - composer self-update
+  # Codesniffer and Coder
+  - composer global require "squizlabs/php_codesniffer:2.0.*@dev"
+  - composer global require drupal/coder:8.2.0-beta1
+  - ln -s ~/.composer/vendor/drupal/coder/coder_sniffer/Drupal ~/.composer/vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/
+
+script:
+  - phpcs --report=full --standard=Drupal "$TRAVIS_BUILD_DIR" || true
+  - cd ~/
+  - git clone --depth 1 --branch 8.0.x http://git.drupal.org/project/drupal.git
+  - cd drupal/modules
+  - git clone --depth 1 --branch 8.x-1.x http://git.drupal.org/project/media_entity.git
+  - ln -s $TRAVIS_BUILD_DIR
+  - cd ../
+  - ./vendor/bin/phpunit -c core modules/media_entity_twitter/tests/src/Unit

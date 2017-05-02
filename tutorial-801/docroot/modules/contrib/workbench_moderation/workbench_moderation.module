@@ -1,0 +1,267 @@
+<?php
+
+/**
+ * @file
+ * Contains workbench_moderation.module.
+ *
+ * @todo include UI bits of https://www.drupal.org/node/2429153
+ * @todo How to remove the live version (i.e. published => draft without new
+ *   revision) - i.e. unpublish
+ */
+
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\node\NodeInterface;
+use Drupal\node\Plugin\Action\PublishNode;
+use Drupal\node\Plugin\Action\UnpublishNode;
+use Drupal\workbench_moderation\Plugin\Action\ModerationOptOutPublishNode;
+use Drupal\workbench_moderation\Plugin\Action\ModerationOptOutUnpublishNode;
+use Drupal\workbench_moderation\Plugin\Menu\EditTab;
+
+/**
+ * Implements hook_help().
+ */
+function workbench_moderation_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the workbench_moderation module.
+    case 'help.page.workbench_moderation':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Provides basic moderation for content') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_entity_base_field_info().
+ */
+function workbench_moderation_entity_base_field_info(EntityTypeInterface $entity_type) {
+  return \Drupal::service('workbench_moderation.entity_type')->entityBaseFieldInfo($entity_type);
+}
+
+/**
+ * Implements hook_module_implements_alter().
+ */
+function workbench_moderation_module_implements_alter(&$implementations, $hook) {
+  /** @var \Drupal\workbench_moderation\InlineEditingDisabler $inline_editing_disabler */
+  $inline_editing_disabler = \Drupal::service('workbench_moderation.inline_editing_disabler');
+  $inline_editing_disabler->moduleImplementsAlter($implementations, $hook);
+}
+
+/**
+ * Implements hook_entity_view_alter().
+ */
+function workbench_moderation_entity_view_alter(&$build, EntityInterface $entity, EntityViewDisplayInterface $display) {
+  /** @var \Drupal\workbench_moderation\InlineEditingDisabler $inline_editing_disabler */
+  $inline_editing_disabler = \Drupal::service('workbench_moderation.inline_editing_disabler');
+  $inline_editing_disabler->entityViewAlter($build, $entity, $display);
+}
+
+/**
+ * Implements hook_node_view_alter().
+ */
+function workbench_moderation_node_view_alter(&$build, EntityInterface $entity, EntityViewDisplayInterface $display) {
+  /** @var \Drupal\workbench_moderation\ModerationInformationInterface $mod_info */
+  $mod_info = \Drupal::service('workbench_moderation.moderation_information');
+  /** @var \Drupal\Core\Extension\ModuleHandlerInterface $module_handler */
+  $module_handler = \Drupal::service('module_handler');
+  // Show standard node contextual links on node drafts.
+  if ($mod_info->isLatestRevision($entity)) {
+    if (isset($build['#contextual_links']['node_revision'])) {
+      unset($build['#contextual_links']['node_revision']);
+      $build['#contextual_links']['node'] = [
+        'route_parameters' => ['node' => $entity->id()],
+        'metadata' => ['changed' => $entity->getChangedTime()],
+      ];
+    }
+  }
+  // Disable Quick Edit when viewing individual revisions.
+  if ($module_handler->moduleExists('quickedit')) {
+    $route_match = \Drupal::routeMatch();
+    $match = $route_match->getCurrentRouteMatch();
+    if ($match->getRouteName() === 'entity.node.revision') {
+      $build['#attributes']['data-quickedit-disable'] = TRUE;
+    }
+  }
+}
+
+/**
+ * Implements hook_entity_type_alter().
+ */
+function workbench_moderation_entity_type_alter(array &$entity_types) {
+  \Drupal::service('workbench_moderation.entity_type')->entityTypeAlter($entity_types);
+}
+
+/**
+ * Implements hook_entity_operation().
+ */
+function workbench_moderation_entity_operation(EntityInterface $entity) {
+  return \Drupal::service('workbench_moderation.entity_type')->entityOperation($entity);
+}
+
+/**
+ * Sets required flag based on enabled state.
+ */
+function workbench_moderation_entity_bundle_field_info_alter(&$fields, EntityTypeInterface $entity_type, $bundle) {
+  return \Drupal::service('workbench_moderation.entity_type')->entityBundleFieldInfoAlter($fields, $entity_type, $bundle);
+}
+
+/**
+ * Implements hook_entity_load().
+ */
+function workbench_moderation_entity_storage_load(array $entities, $entity_type_id) {
+  return \Drupal::service('workbench_moderation.entity_operations')->entityStorageLoad($entities, $entity_type_id);
+}
+
+/**
+ * Implements hook_entity_presave().
+ */
+function workbench_moderation_entity_presave(EntityInterface $entity) {
+  return \Drupal::service('workbench_moderation.entity_operations')->entityPresave($entity);
+}
+
+/**
+ * Implements hook_entity_insert().
+ */
+function workbench_moderation_entity_insert(EntityInterface $entity) {
+  return \Drupal::service('workbench_moderation.entity_operations')->entityInsert($entity);
+}
+
+/**
+ * Implements hook_entity_update().
+ */
+function workbench_moderation_entity_update(EntityInterface $entity) {
+  return \Drupal::service('workbench_moderation.entity_operations')->entityUpdate($entity);
+}
+
+/**
+ * Implements hook_local_tasks_alter().
+ */
+function workbench_moderation_local_tasks_alter(&$local_tasks) {
+  $content_entity_type_ids = array_keys(array_filter(\Drupal::entityTypeManager()->getDefinitions(), function (EntityTypeInterface $entity_type) {
+    return $entity_type->isRevisionable();
+  }));
+
+  foreach ($content_entity_type_ids as $content_entity_type_id) {
+    if (isset($local_tasks["entity.$content_entity_type_id.edit_form"])) {
+      $local_tasks["entity.$content_entity_type_id.edit_form"]['class'] = EditTab::class;
+      $local_tasks["entity.$content_entity_type_id.edit_form"]['entity_type_id'] = $content_entity_type_id;
+    }
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function workbench_moderation_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  return \Drupal::service('workbench_moderation.entity_type')->bundleFormAlter($form, $form_state, $form_id);
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ *
+ * Many default node templates rely on $page to determine whether to output the
+ * node title as part of the node content.
+ */
+function workbench_moderation_preprocess_node(&$variables) {
+  \Drupal::service('workbench_moderation.workbench_preprocess')->preprocessNode($variables);
+}
+
+/**
+ * Implements hook_entity_extra_field_info().
+ */
+function workbench_moderation_entity_extra_field_info() {
+  return \Drupal::service('workbench_moderation.entity_type')->entityExtraFieldInfo();
+}
+
+/**
+ * Implements hook_entity_view().
+ */
+function workbench_moderation_entity_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
+  \Drupal::service('workbench_moderation.entity_operations')->entityView($build, $entity, $display, $view_mode);
+}
+
+/**
+ * Implements hook_entity_access().
+ *
+ * Nodes in particular should be viewable if unpublished and the user has
+ * the appropriate permission. This permission is therefore effectively
+ * mandatory for any user that wants to moderate things.
+ */
+function workbench_moderation_node_access(NodeInterface $entity, $operation, AccountInterface $account) {
+  /** @var \Drupal\workbench_moderation\ModerationInformationInterface $modinfo */
+  $moderation_info = Drupal::service('workbench_moderation.moderation_information');
+
+  if ($operation == 'view') {
+    return (!$entity->isPublished())
+      ? AccessResult::allowedIfHasPermission($account, 'view any unpublished content')
+      : AccessResult::neutral();
+  }
+  elseif ($operation == 'update' && $moderation_info->isModeratableEntity($entity) && $entity->moderation_information && $entity->moderation_information->target_id) {
+    /** @var \Drupal\workbench_moderation\StateTransitionValidation $transition_validation */
+    $transition_validation = \Drupal::service('workbench_moderation.state_transition_validation');
+
+    return $transition_validation->getValidTransitionTargets($entity, $account)
+      ? AccessResult::neutral()
+      : AccessResult::forbidden();
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function workbench_moderation_theme($existing, $type, $theme, $path) {
+  $themes['entity_moderation_form'] = [
+    'render element' => 'form',
+  ];
+
+  return $themes;
+}
+
+/**
+ * Implements hook_action_info_alter().
+ */
+function workbench_moderation_action_info_alter(&$definitions) {
+
+  // The publish/unpublish actions are not valid on moderated entities. So swap
+  // their implementations out for alternates that will become a no-op on a
+  // moderated node. If another module has already swapped out those classes,
+  // though, we'll be polite and do nothing.
+  if (isset($definitions['node_publish_action']['class']) && $definitions['node_publish_action']['class'] == PublishNode::class) {
+    $definitions['node_publish_action']['class'] = ModerationOptOutPublishNode::class;
+  }
+  if (isset($definitions['node_unpublish_action']['class']) && $definitions['node_unpublish_action']['class'] == UnpublishNode::class) {
+    $definitions['node_unpublish_action']['class'] = ModerationOptOutUnpublishNode::class;
+  }
+}
+
+/**
+ * Implements hook_views_data_alter().
+ *
+ * @todo Use \Drupal\workbench_moderation\ViewsData
+ */
+function workbench_moderation_views_data_alter(array &$data) {
+
+  /** @var \Drupal\workbench_moderation\ModerationInformationInterface $mod_info */
+  $mod_info = \Drupal::service('workbench_moderation.moderation_information');
+
+  /** @var \Drupal\Core\Entity\EntityTypeManagerInterface $etm */
+  $etm = \Drupal::service('entity_type.manager');
+
+  $revisionable_types = $mod_info->selectRevisionableEntities($etm->getDefinitions());
+
+  foreach ($revisionable_types as $type) {
+    $data[$type->getRevisionTable()]['latest_revision'] = [
+      'title' => t('Is Latest Revision'),
+      'help' => t('Restrict the view to only revisions that are the latest revision of their entity.'),
+      'filter' => ['id' => 'latest_revision'],
+    ];
+  }
+}

@@ -1,0 +1,44 @@
+{
+    "name": "caxy/php-htmldiff",
+    "type": "library",
+    "description": "A library for comparing two HTML files/snippets and highlighting the differences using simple HTML.",
+    "keywords": [
+        "diff",
+        "html"
+    ],
+    "homepage": "https://github.com/caxy/php-htmldiff",
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "Josh Schroeder",
+            "email": "jschroeder@caxy.com",
+            "homepage": "http://www.caxy.com"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/caxy/php-htmldiff/issues"
+    },
+    "require": {
+        "php": ">=5.3.3",
+        "ezyang/htmlpurifier": "^4.7",
+        "sunra/php-simple-html-dom-parser": "^1.5"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.8",
+        "doctrine/cache": "~1.0"
+    },
+    "suggest": {
+        "doctrine/cache": "Used for caching the calculated diffs using a Doctrine Cache Provider"
+    },
+    "autoload": {
+        "psr-0": { "Caxy\\HtmlDiff": "lib/" }
+    },
+    "autoload-dev": {
+        "psr-4": { "Caxy\\Tests\\": "tests/Caxy/Tests" }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1.x-dev"
+        }
+    }
+}

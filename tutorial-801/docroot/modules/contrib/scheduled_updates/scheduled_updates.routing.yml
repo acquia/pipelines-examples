@@ -1,0 +1,152 @@
+
+# ScheduledUpdate routing definition
+entity.scheduled_update.canonical:
+  path: '/admin/content/scheduled_update/{scheduled_update}'
+  defaults:
+    _entity_view: 'scheduled_update'
+    _title: 'Scheduled update'
+  requirements:
+    _permission: 'view scheduled update entities'
+  options:
+    _admin_route: TRUE
+
+entity.scheduled_update.collection:
+  path: '/admin/content/scheduled_update'
+  defaults:
+    _entity_list: 'scheduled_update'
+    _title: 'Scheduled update list'
+  requirements:
+    _permission: 'view scheduled update entities'
+  options:
+    _admin_route: TRUE
+
+entity.scheduled_update.edit_form:
+  path: '/admin/content/scheduled_update/{scheduled_update}/edit'
+  defaults:
+    _entity_form: scheduled_update.edit
+    _title: 'Edit Scheduled update'
+  requirements:
+    _entity_access: 'scheduled_update.edit'
+  options:
+    _admin_route: TRUE
+
+entity.scheduled_update.delete_form:
+  path: '/admin/content/scheduled_update/{scheduled_update}/delete'
+  defaults:
+    _entity_form: scheduled_update.delete
+    _title: 'Delete Scheduled update'
+  requirements:
+    _entity_access: 'scheduled_update.delete'
+  options:
+    _admin_route: TRUE
+
+scheduled_update.add_page:
+  path: '/admin/content/scheduled-update/add'
+  defaults:
+    _controller: '\Drupal\scheduled_updates\Controller\ScheduledUpdateAddController::add'
+    _title: 'Add Scheduled update'
+  requirements:
+    _custom_access: '\Drupal\scheduled_updates\Controller\ScheduledUpdateAddController::addPageAccess'
+
+entity.scheduled_update.add_form:
+  path: '/admin/content/scheduled-update/add/{scheduled_update_type}'
+  defaults:
+    _controller: '\Drupal\scheduled_updates\Controller\ScheduledUpdateAddController::addForm'
+    _title_callback: '\Drupal\scheduled_updates\Controller\ScheduledUpdateAddController::getAddFormTitle'
+  options:
+    _admin_route: TRUE
+  requirements:
+    _custom_access: '\Drupal\scheduled_updates\Controller\ScheduledUpdateAddController::addFormAccess'
+
+
+scheduled_update.config.overview:
+  path: '/admin/config/workflow/scheduled-update-type'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Scheduled Updates'
+  requirements:
+    _permission: 'administer scheduled update types'
+
+# ScheduledUpdateType routing definition
+entity.scheduled_update_type.collection:
+  path: '/admin/config/workflow/scheduled-update-type/list'
+  defaults:
+    _entity_list: 'scheduled_update_type'
+    _title: 'Scheduled update types'
+  requirements:
+    _permission: 'administer scheduled update types'
+  options:
+    _admin_route: TRUE
+
+entity.scheduled_update_type.add_form:
+  path: '/admin/config/workflow/scheduled-update-type/add'
+  defaults:
+    _entity_form: 'scheduled_update_type.add'
+    _title: 'Add Scheduled update type'
+  requirements:
+    _permission: 'administer scheduled update types'
+  options:
+    _admin_route: TRUE
+
+entity.scheduled_update_type.add_form.entity_type:
+  path: '/admin/config/workflow/scheduled-update-type/add-type/{entity_type_id}/{bundle}/{mode}'
+  defaults:
+    _entity_form: 'scheduled_update_type.add'
+    _title: 'Add Scheduled update type'
+    mode: 'embedded'
+  requirements:
+    _permission: 'administer scheduled update types'
+  options:
+    _admin_route: TRUE
+
+entity.scheduled_update_type.edit_form:
+  path: '/admin/config/workflow/scheduled-update-type/{scheduled_update_type}'
+  defaults:
+    _entity_form: 'scheduled_update_type.edit'
+    _title_callback: '\Drupal\scheduled_updates\Controller\ScheduledUpdateTypeController::editTitle'
+  requirements:
+    _permission: 'administer scheduled update types'
+  options:
+    _admin_route: TRUE
+
+
+entity.scheduled_update_type.clone_fields:
+  path: '/admin/config/workflow/scheduled-update-type/{scheduled_update_type}/clone-fields'
+  defaults:
+    _form: '\Drupal\scheduled_updates\Form\FieldClonerForm'
+    _title_callback: '\Drupal\scheduled_updates\Controller\ScheduledUpdateTypeController::editTitle'
+  requirements:
+    _permission: 'administer scheduled update types'
+  options:
+    _admin_route: TRUE
+
+entity.scheduled_update_type.delete_form:
+  path: '/admin/config/workflow/scheduled-update-type/{scheduled_update_type}/delete'
+  defaults:
+    _entity_form: 'scheduled_update_type.delete'
+    _title: 'Delete Scheduled update type'
+  requirements:
+    _permission: 'administer scheduled update types'
+  options:
+    _admin_route: TRUE
+
+schedule_updates.runner_form:
+  path: '/admin/config/workflow/schedule-updates/run'
+  defaults:
+    _form: '\Drupal\scheduled_updates\Form\UpdateRunnerForm'
+    _title: 'Scheduled Updates'
+  requirements:
+    _permission: 'administer scheduled update types'
+
+
+
+scheduled_updates.settings_form:
+  path: '/admin/config/workflow/schedule-updates/admin'
+  defaults:
+    _form: '\Drupal\scheduled_updates\Form\AdminForm'
+    _title: 'AdminForm'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+    _admin_route: TRUE
+

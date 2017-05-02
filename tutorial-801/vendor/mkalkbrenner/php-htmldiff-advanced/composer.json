@@ -1,0 +1,21 @@
+{
+    "name": "mkalkbrenner/php-htmldiff-advanced",
+    "type": "library",
+    "description": "An add-on for the php-htmldiff library for comparing two HTML files/snippets and highlighting the differences using simple HTML.",
+    "keywords": [
+        "diff",
+        "html"
+    ],
+    "homepage": "https://github.com/mkalkbrenner/php-htmldiff",
+    "license": "GNU General Public License V2",
+    "require":{
+        "php": ">=5.5.0",
+        "caxy/php-htmldiff": ">=0.0.6"
+    },
+    "autoload": {
+        "files": [
+            "src/HtmlDiffAdvancedInterface.php",
+            "src/HtmlDiffAdvanced.php"
+        ]
+    }
+}

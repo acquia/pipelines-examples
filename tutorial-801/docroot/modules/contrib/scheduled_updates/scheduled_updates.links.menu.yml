@@ -1,0 +1,34 @@
+# Scheduled update menu items definition
+entity.scheduled_update.collection:
+  title: 'Scheduled updates'
+  route_name: entity.scheduled_update.collection
+  description: 'Scheduled Update listing'
+  parent: system.admin_content
+  weight: 100
+
+scheduled_update.config.overview:
+  title: 'Scheduled Updates Overview'
+  route_name: scheduled_update.config.overview
+  description: 'Manage Scheduled Update Types and Run Scheduled Updates'
+  parent: system.admin_config_workflow
+  weight: 98
+# Scheduled update type menu items definition
+entity.scheduled_update_type.collection:
+  title: 'Scheduled Update Types'
+  route_name: entity.scheduled_update_type.collection
+  description: 'Manage Scheduled Update Types and anually run updates.'
+  parent: scheduled_update.config.overview
+  weight: 97
+schedule_updates.runner_form:
+  title: 'Run Scheduled Updates'
+  route_name: schedule_updates.runner_form
+  description: 'Manually run scheduled updates'
+  parent: scheduled_update.config.overview
+  weight: 98
+schedule_updates.settings_form:
+  title: 'Scheduled Updates Settings'
+  route_name: scheduled_updates.settings_form
+  description: 'Various settings.'
+  parent: scheduled_update.config.overview
+  weight: 99
+

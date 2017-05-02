@@ -1,0 +1,21 @@
+workbench_moderation.moderation_state_transition.*:
+  type: config_entity
+  label: 'Moderation state transition config'
+  mapping:
+    id:
+      type: string
+      label: 'ID'
+    label:
+      type: label
+      label: 'Label'
+    stateFrom:
+      type: string
+      label: 'From state'
+    stateTo:
+      type: string
+      label: 'To state'
+    weight:
+      type: integer
+      label: 'Weight'
+    uuid:
+      type: string

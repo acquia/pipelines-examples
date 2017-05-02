@@ -1,0 +1,32 @@
+# Scheduled update routing definition
+entity.scheduled_update.canonical:
+  route_name: entity.scheduled_update.canonical
+  base_route: entity.scheduled_update.canonical
+  title: 'View'
+
+entity.scheduled_update.edit_form:
+  route_name: entity.scheduled_update.edit_form
+  base_route: entity.scheduled_update.canonical
+  title: Edit
+
+entity.scheduled_update.delete_form:
+  route_name:  entity.scheduled_update.delete_form
+  base_route:  entity.scheduled_update.canonical
+  title: Delete
+  weight: 10
+
+# @todo Replace with a default View
+scheduled_update.admin:
+  title: Scheduled Updates
+  route_name: entity.scheduled_update.collection
+  base_route: system.admin_content
+
+entity.scheduled_update_type.edit_form:
+  title: Edit
+  route_name: entity.scheduled_update_type.edit_form
+  base_route: entity.scheduled_update_type.edit_form
+
+entity.scheduled_update_type.clone_fields:
+  title: Clone Fields
+  route_name: entity.scheduled_update_type.clone_fields
+  base_route: entity.scheduled_update_type.edit_form

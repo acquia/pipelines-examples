@@ -1,0 +1,17 @@
+type: module
+name: 'Search API Taxonomy Term Handlers'
+description: 'Enables the use of Search API indexed taxonomy terms as filters or arguments in Search API supported Views.'
+package: Search
+# core: 8.x
+configure: search_api.overview
+dependencies:
+  - drupal:system (>=8.1)
+  - search_api:search_api
+  - drupal:taxonomy
+  - drupal:views
+
+# Information added by Drupal.org packaging script on 2017-04-26
+version: '8.x-1.0'
+core: '8.x'
+project: 'search_api'
+datestamp: 1493201347

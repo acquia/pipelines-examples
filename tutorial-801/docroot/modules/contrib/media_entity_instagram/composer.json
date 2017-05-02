@@ -1,0 +1,15 @@
+{
+  "name": "drupal/media_entity_instagram",
+  "description": "Provides a media entity instagram.",
+  "type": "drupal-module",
+  "license": "GPL-2.0+",
+  "require": {
+    "PHP-Instagram-API/PHP-Instagram-API": "dev-master"
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/designesse/PHP-Instagram-API.git"
+    }
+  ]
+}

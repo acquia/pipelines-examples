@@ -1,0 +1,14 @@
+<?php
+
+/**
+ * @file
+ * Contains hook implementations for the Search API Term Handlers module.
+ */
+
+/**
+ * Implements hook_search_api_views_handler_mapping_alter().
+ */
+function search_api_views_taxonomy_search_api_views_handler_mapping_alter(array &$mapping) {
+  $mapping['entity:taxonomy_term']['argument']['id'] = 'search_api_term';
+  $mapping['entity:taxonomy_term']['filter']['id'] = 'search_api_term';
+}

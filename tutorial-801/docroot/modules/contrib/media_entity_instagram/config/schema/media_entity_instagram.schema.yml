@@ -1,0 +1,32 @@
+media_entity_instagram.settings:
+  type: config_object
+  label: 'Media entity Instagram settings'
+  mapping:
+    local_images:
+      type: string
+      label: 'Base folder for thumbnails'
+
+media_entity.bundle.type.instagram:
+  type: mapping
+  label: 'Instagram type configuration'
+  mapping:
+    source_field:
+      type: string
+      label: 'Field with embed code/URL'
+    use_instagram_api:
+      type: boolean
+      label: 'Whether to use instagram api or not'
+    client_id:
+      type: string
+      label: 'Field with client id'
+
+field.formatter.settings.instagram_embed:
+  type: mapping
+  label: 'Image field display format settings'
+  mapping:
+    width:
+      type: integer
+      label: 'Width'
+    height:
+      type: integer
+      label: 'Height'

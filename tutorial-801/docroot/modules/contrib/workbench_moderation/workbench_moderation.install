@@ -1,0 +1,90 @@
+<?php
+
+/**
+ * @file
+ * Contains install/update hooks for moderation_state.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function workbench_moderation_schema() {
+  $schema['workbench_revision_tracker'] = [
+    'description' => 'Tracks the latest revision for any entity',
+    'fields' => [
+      'entity_type' => [
+        'description' => 'The entity type',
+        'type' => 'varchar_ascii',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'entity_id' => [
+        'description' => 'The entity ID',
+        'type' => 'int',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+      'langcode' => [
+        'description' => 'The language of the entity revision',
+        'type' => 'varchar',
+        'length' => 12,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'revision_id' => [
+        'description' => 'The latest revision ID for this entity',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+    ],
+    'primary key' => ['entity_type', 'entity_id', 'langcode'],
+  ];
+
+  return $schema;
+}
+
+/**
+ * Implements hook_install().
+ */
+function workbench_moderation_install() {
+  /** @var \Drupal\workbench_moderation\ModerationInformationInterface $moderation_info */
+  $moderation_info = \Drupal::service('workbench_moderation.moderation_information');
+
+  /** @var \Drupal\Core\Entity\EntityFieldManagerInterface $field_manager */
+  $field_manager = \Drupal::service('entity_field.manager');
+
+  $entity_definition_update_manager = \Drupal::entityDefinitionUpdateManager();
+
+  $revisionable_entity_defintions = $moderation_info->selectRevisionableEntities((\Drupal::entityTypeManager()->getDefinitions()));
+
+  // Some modules, such as Entity Pilot, seem to have a weirdness with their
+  // base field definition such that an entity may end up in this list that
+  // does not end up selected in EntityTypeInfo::entityTypeAlter().  The result
+  // is that the moderation_state field is null, and thus trying to install
+  // a field with a null definition explodes (rightly so).
+  // Until that oddity is sorted out, we can at least put an extra check in
+  // here to filter out such broken entities.
+  // @todo Remove when the underlying bug is fixed.
+  // @see https://www.drupal.org/node/2674446
+  $revisionable_entity_defintions = array_filter($revisionable_entity_defintions, function(\Drupal\Core\Entity\ContentEntityTypeInterface $type) use ($field_manager) {
+    return !empty($field_manager->getFieldStorageDefinitions($type->id())['moderation_state']);
+  });
+
+  /** @var \Drupal\Core\Entity\ContentEntityTypeInterface $type */
+  foreach ($revisionable_entity_defintions as $type) {
+    $workbench_moderation_definition = $field_manager->getFieldStorageDefinitions($type->id())['moderation_state'];
+    $entity_definition_update_manager->installFieldStorageDefinition('moderation_state', $type->id(), 'moderation_state', $workbench_moderation_definition);
+  }
+}
+
+/**
+ * Creates the workbench_revision_tracker table if needed.
+ */
+function workbench_moderation_update_8001() {
+  if (!db_table_exists('workbench_revision_tracker')) {
+    drupal_install_schema('workbench_moderation');
+  }
+}

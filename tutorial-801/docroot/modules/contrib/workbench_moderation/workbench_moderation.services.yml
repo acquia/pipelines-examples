@@ -1,0 +1,37 @@
+services:
+  paramconverter.latest_revision:
+    class: Drupal\workbench_moderation\ParamConverter\EntityRevisionConverter
+    arguments: ['@entity.manager', '@workbench_moderation.moderation_information']
+    tags:
+      - { name: paramconverter, priority: 6 }
+  workbench_moderation.state_transition_validation:
+    class: \Drupal\workbench_moderation\StateTransitionValidation
+    arguments: ['@entity_type.manager', '@entity.query']
+  workbench_moderation.moderation_information:
+    class: Drupal\workbench_moderation\ModerationInformation
+    arguments: ['@entity_type.manager', '@current_user']
+  workbench_moderation.entity_type:
+    class: Drupal\workbench_moderation\EntityTypeInfo
+    arguments: ['@string_translation', '@workbench_moderation.moderation_information', '@entity_type.manager']
+  workbench_moderation.entity_operations:
+    class: Drupal\workbench_moderation\EntityOperations
+    arguments: ['@workbench_moderation.moderation_information', '@entity_type.manager', '@form_builder', '@event_dispatcher', '@workbench_moderation.revision_tracker']
+  workbench_moderation.inline_editing_disabler:
+    class: \Drupal\workbench_moderation\InlineEditingDisabler
+    arguments: ['@workbench_moderation.moderation_information']
+  workbench_moderation.workbench_preprocess:
+    class: Drupal\workbench_moderation\WorkbenchPreprocess
+    arguments: ['@current_route_match']
+  access_check.latest_revision:
+    class: Drupal\workbench_moderation\Access\LatestRevisionCheck
+    arguments: ['@workbench_moderation.moderation_information']
+    tags:
+      - { name: access_check, applies_to: _workbench_moderation_latest_version }
+  workbench_moderation.revision_tracker:
+    class: Drupal\workbench_moderation\RevisionTracker
+    arguments: ['@database']
+    tags:
+     - { name: backend_overridable }
+  workbench_moderation.views_data:
+    class: \Drupal\workbench_moderation\ViewsData
+    arguments: ['@entity_type.manager', '@workbench_moderation.moderation_information']

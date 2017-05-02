@@ -1,0 +1,6 @@
+command:
+  scheduled_updates:
+    run_updates:
+      description: 'Run Scheduled Update'
+      arguments:
+        update_types: 'A comma separated list of updates do you want to run'

@@ -1,0 +1,6 @@
+composer.lock
+vendor/
+/demo/bower_components
+/demo/node_modules
+.DS_Store
+.idea

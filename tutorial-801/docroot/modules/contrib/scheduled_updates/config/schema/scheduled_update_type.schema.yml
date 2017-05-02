@@ -1,0 +1,70 @@
+scheduled_updates.scheduled_update_type.*:
+  type: config_entity
+  label: 'Scheduled update type config'
+  mapping:
+    id:
+      type: string
+      label: 'ID'
+    label:
+      type: label
+      label: 'Label'
+    uuid:
+      type: string
+    update_entity_type:
+      type: string
+      label: Update Entity Type
+    update_types_supported:
+      type: sequence
+      label: Types Supported
+      sequence:
+        type: string
+        label: Supported Type
+    field_map:
+      type: sequence
+      label: Field Map
+      sequence:
+        type: string
+        label: Destination field id
+    update_runner:
+      type: update_runner.plugin.[id]
+      label: 'Update Runner'
+
+update_runner.plugin:
+  type: mapping
+  label: 'Update Runner'
+  mapping:
+    id:
+      type: string
+      label: 'ID'
+    uuid:
+      type: string
+      label: 'UUID'
+    invalid_update_behavior:
+      type: string
+      label: 'Invalid Update behavior'
+    after_run:
+      type: string
+      label: 'After update behavior'
+    create_revisions:
+      type: string
+      label: 'Revisions behavior'
+    update_user:
+      type: string
+      label: 'Run update as User'
+
+# @todo Make schemas for all updaters
+update_runner.plugin.*:
+  type: update_runner.plugin
+  label: 'Wild card Update Runner'
+
+update_runner.plugin.default_independent:
+  type: update_runner.plugin
+  mapping:
+    bundles:
+      type: sequence
+      label: 'Bundles'
+      sequence:
+        type: string
+
+
+
