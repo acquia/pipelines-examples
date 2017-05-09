@@ -1,0 +1,12 @@
+type: module
+name: 'Acquia Search Test'
+description: 'Utility module for Acquia Search tests.'
+package: 'Acquia Connector'
+# core: 8.x
+hidden: true
+
+# Information added by Drupal.org packaging script on 2017-04-24
+version: '8.x-1.10'
+core: '8.x'
+project: 'acquia_connector'
+datestamp: 1493037549

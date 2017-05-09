@@ -1,0 +1,18 @@
+name: Entity Browser example
+description: 'Entity browser example module.'
+type: module
+package: Media
+# core: 8.x
+dependencies:
+  - entity_browser:entity_browser
+  - drupal:views
+  - drupal:field
+  - drupal:file
+  - drupal:node
+  - drupal:image
+
+# Information added by Drupal.org packaging script on 2017-04-20
+version: '8.x-1.0'
+core: '8.x'
+project: 'entity_browser'
+datestamp: 1492678157

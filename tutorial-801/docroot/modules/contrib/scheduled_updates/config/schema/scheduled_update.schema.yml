@@ -1,0 +1,7 @@
+scheduled_updates.settings:
+  type: config_object
+  label: 'Scheduled Update settings'
+  mapping:
+    timeout:
+      type: integer
+      label: 'Update runner timeout'

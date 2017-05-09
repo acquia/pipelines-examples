@@ -1,0 +1,14 @@
+name: Scheduled Updates
+type: module
+description: Create scheduled updates to field values on entities such content, users, and terms.
+# core: 8.x
+package: Other
+dependencies:
+  - options
+  - inline_entity_form
+
+# Information added by Drupal.org packaging script on 2017-03-11
+version: '8.x-1.0-alpha6'
+core: '8.x'
+project: 'scheduled_updates'
+datestamp: 1489190885

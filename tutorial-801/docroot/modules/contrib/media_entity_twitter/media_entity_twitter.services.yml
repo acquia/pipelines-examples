@@ -1,0 +1,13 @@
+services:
+  media_entity_twitter.tweet_fetcher:
+    class: '\Drupal\media_entity_twitter\TweetFetcher'
+    arguments:
+      - '@media_entity_twitter.cache.tweets'
+
+  media_entity_twitter.cache.tweets:
+    class: '\Drupal\Core\Cache\CacheBackendInterface'
+    tags:
+      - { name: cache.bin, default_backend: cache.backend.chainedfast }
+    factory: cache_factory:get
+    arguments:
+      - tweets

@@ -1,0 +1,125 @@
+<?php
+
+/**
+ * @file
+ * Contains scheduled_updates.module..
+ */
+
+use Drupal\Core\Entity\ContentEntityInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\scheduled_updates\Entity\ScheduledUpdateType;
+
+/**
+ * Implements hook_help().
+ */
+function scheduled_updates_help($route_name, RouteMatchInterface $route_match) {
+  $output = '';
+  switch ($route_name) {
+    // Main module help for the scheduled_updates module.
+    case 'help.page.scheduled_updates':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= scheduled_updates_help_text($route_name);
+      break;
+    case 'schedule_updates.runner_form':
+      $output = '<p>' . t('This will manually run all updates where the update time is equal to or less than the current time.') . '</p>';
+      break;
+    case 'entity.scheduled_update_type.collection':
+      $output = '<p>' . t('Scheduled Updates Types define the updates available on your site.  ' .
+          'Each type targets specified entity type such as nodes or users.  ' .
+          'Each type also specifies which field or fields are available on the updates of that type.'
+        )
+        . '</p>';
+      break;
+    case 'entity.scheduled_update_type.clone_fields':
+      $output = '<p>' . t('This is form lets you select fields from the target entity type to be copied to this Scheduled Update Type.  ' .
+          'The settings from the source fields will be copied and the new fields will be mapped to update the entity fields when the updates run.  ' .
+          'Fields from the target entity type that are already mapped to update fields will no longer show up on this form.  ' .
+          'You can delete existing fields on the manage fields tab.  '
+        )
+        . '</p>';
+
+  }
+  return $output;
+}
+
+function scheduled_updates_help_text($section) {
+  $file_path = drupal_get_path('module', 'scheduled_updates') . '/docs/' . $section . '.html';
+  return file_get_contents($file_path);
+}
+
+/**
+ * Implements hook_theme().
+ */
+function scheduled_updates_theme() {
+  $theme = [];
+  $theme['scheduled_update'] = [
+    'render element' => 'elements',
+    'file' => 'scheduled_update.page.inc',
+    'template' => 'scheduled_update',
+  ];
+  $theme['scheduled_update_content_add_list'] = [
+    'render element' => 'content',
+    'variables' => ['content' => NULL],
+    'file' => 'scheduled_update.page.inc',
+  ];
+  return $theme;
+}
+
+/**
+ * Implements hook_cron().
+ */
+function scheduled_updates_cron() {
+  \Drupal::service('scheduled_updates.update_runner')->runAllUpdates();
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * Don't allow Referencer update types to be referenced.
+ *
+ * @todo Move this to a service.
+ */
+function scheduled_updates_form_field_config_edit_form_alter(&$form, FormStateInterface &$form_state, $form_id) {
+  $build_info = $form_state->getBuildInfo();
+  if ($build_info['callback_object']) {
+    /** @var \Drupal\field_ui\Form\FieldConfigEditForm $fieldForm */
+    $fieldForm = $build_info['callback_object'];
+    /** @var \Drupal\field\Entity\FieldConfig $fieldConfig */
+    $fieldConfig = $fieldForm->getEntity();
+    if ($fieldConfig->getType() == 'entity_reference' && $fieldConfig->getSetting('target_type') == 'scheduled_update') {
+      // @todo Is there an easier way to figure out field type?
+      if (isset($form['settings']['handler']['handler_settings']['target_bundles'])) {
+        if ($options =& $form['settings']['handler']['handler_settings']['target_bundles']['#options']) {
+          /** @var \Drupal\scheduled_updates\UpdateRunnerUtils $runner_utils */
+          $runner_utils = \Drupal::service('scheduled_updates.update_runner');
+          /** @var \Drupal\scheduled_updates\ScheduledUpdateTypeInterface[] $types */
+          $types = ScheduledUpdateType::loadMultiple(array_keys($options));
+          foreach ($types as $type) {
+
+            if (!$runner_utils->isEmbeddedUpdater($type)) {
+              unset($options[$type->id()]);
+            }
+          }
+          if (empty($options)) {
+            // All have been unset.
+            drupal_set_message(t('No @type have been created that can be referenced.', ['@type' => 'Scheduled Update Types']), 'warning');
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_entity_update().
+ */
+function scheduled_updates_entity_update($entity) {
+  if ($entity instanceof ContentEntityInterface) {
+    /** @var \Drupal\scheduled_updates\UpdateRunnerUtils $global_runner */
+    $global_runner = \Drupal::service('scheduled_updates.update_runner');
+    $global_runner->invokeEntityUpdate($entity);
+  }
+
+}

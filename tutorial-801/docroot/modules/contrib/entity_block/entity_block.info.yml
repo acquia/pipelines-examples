@@ -1,0 +1,10 @@
+name: Entity Block
+description: Let site administrators place content entities as blocks.
+type: module
+# core: 8.x
+
+# Information added by Drupal.org packaging script on 2017-01-17
+version: '8.x-1.0-alpha2'
+core: '8.x'
+project: 'entity_block'
+datestamp: 1484641091

@@ -1,0 +1,61 @@
+<?php
+
+/**
+ * @file
+ * Hook implementations for media_entity_twitter module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function media_entity_twitter_theme() {
+  return [
+    'media_entity_twitter_tweet' => [
+      'variables' => ['path' => NULL, 'attributes' => []],
+    ],
+    'media_entity_twitter_tweet_thumbnail' => [
+      'variables' => [
+        'content' => '',
+        'author' => '',
+        'avatar' => NULL,
+      ],
+    ],
+  ];
+}
+
+/**
+ * Preprocess function for media_entity_twitter_tweet_thumbnail theme hook.
+ *
+ * @param array $variables
+ *   Variables to be injected into the template.
+ */
+function media_entity_twitter_preprocess_media_entity_twitter_tweet_thumbnail(array &$variables) {
+  // If the avatar exists, load it directly into memory and base64 encode it.
+  // For security reasons, browsers don't always allow external images xlinked
+  // in an SVG to be displayed when the SVG is being embedded via an <img> tag.
+  // The workaround is to embed the image directly into the SVG as a base64
+  // encoded string.
+  if ($variables['avatar']) {
+    $extension = pathinfo($variables['avatar'], PATHINFO_EXTENSION);
+    $extension = strtolower($extension);
+
+    // Don't fetch the avatar if it has an unrecognized extension.
+    if (in_array($extension, ['gif', 'jpg', 'jpeg', 'png', 'webp'])) {
+      $data = file_get_contents($variables['avatar']);
+
+      if ($data) {
+        // image/jpg is not a thing.
+        if ($extension == 'jpg') {
+          $extension = 'jpeg';
+        }
+        $variables['avatar'] = 'data:image/' . $extension . ';base64,' . base64_encode($data);
+      }
+      else {
+        unset($variables['avatar']);
+      }
+    }
+    else {
+      unset($variables['avatar']);
+    }
+  }
+}

@@ -23,6 +23,7 @@ Each folder contains the sample code for that tutorial, plus a README that inclu
 * **[tutorial-501](https://github.com/acquia/pipelines-examples/tree/master/tutorial-501)** - Start a web and MySQL server, and run Behat tests against your site, all within your Pipelines job.
 * **[tutorial-601](https://github.com/acquia/pipelines-examples/tree/master/tutorial-601)** - Install node version manner and node package manager
 * **[tutorial-701](https://github.com/acquia/pipelines-examples/tree/master/tutorial-701)** - Deploy builds, feature branches, and GitHub pull requests to Acquia Cloud on-demand environments.
+* **[tutorial-701](https://github.com/acquia/pipelines-examples/tree/master/tutorial-801)** - Start a web and MySQL server, and run a JavaScript test against Acquia Lightning.
 
 ### See also
 * [Pipelines documentation](https://docs.acquia.com/pipelines)

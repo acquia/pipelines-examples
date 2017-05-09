@@ -1,0 +1,16 @@
+entity.scheduled_update.add_form:
+  route_name: 'scheduled_update.add_page'
+  title: 'Add Scheduled update'
+  appears_on:
+    - entity.scheduled_update.collection
+
+entity.scheduled_update_type.add_form:
+  route_name: 'entity.scheduled_update_type.add_form'
+  title: 'Add Scheduled update type'
+  appears_on:
+    - entity.scheduled_update_type.collection
+
+shechduled_updates.field_storage_config_add:
+  class: \Drupal\Core\Menu\LocalActionDefault
+  deriver: \Drupal\scheduled_updates\Plugin\Derivative\AddUpdateFieldLocalAction
+

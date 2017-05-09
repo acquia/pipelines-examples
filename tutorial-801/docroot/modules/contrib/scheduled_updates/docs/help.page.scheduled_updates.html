@@ -1,0 +1,35 @@
+<!-- directly copied from project page on drupal.org -->
+The <strong>Scheduled Updates</strong> module allows scheduling updates at a specific date and time to entities such as Content(nodes), Users, Terms, Files and many more.  Update dates can contain 1 or multiple fields. Since many more things are fields in Drupal 8 this means you can also update properties like published, promoted, sticky, title and pretty much anything else you can think of.
+
+This modules supports 2 different types of updates:
+<h2>Embedded Updates</h2>
+These updates can be embedded on the add/edit form of the entity they will be updating.
+<h3>Example uses:</h3>
+<ol>
+    <li>Scheduling Publish and/or UnPublish Dates directly on node forms.
+        <!-- <img src="http://www.drupal.org/files/project-images/Screenshot%202016-01-08%2009.40.07.png" alt="" /> --></li>
+    <li>Set a user to inactive at a certain date on the user edit form.</li>
+</ol>
+
+<h2>Independent Updates</h2>
+These updates are added directly using their own forms. When making these updates the user selects nodes, users or other entities they would like to update. These updates can target multiple entities in a single update.
+
+<h3>Example uses:</h3>
+<ol>
+    <li>Select a group of nodes to be promoted and/or published on  a certain date.</li>
+    <li>Select a group of users to be given a Manager role at the beginning of the next month.</li>
+</ol>
+
+<h2>Configuration</h2>
+Before making updates you must first create at least one <strong>Scheduled Update Type</strong>.
+A Scheduled Update Type:
+<ol>
+    <li>Can <strong>only target one entity type</strong> to update</li>
+    <li>Can  either be embedded <strong>or</strong> an independent update</li>
+</ol>
+
+If you choose and an embedded update this module will create a field to reference the update type on the target entity type.
+
+To create a scheduled update type go to: <strong>Configuration -> Workflow -> Scheduled Updates -> Scheduled Update Types</strong>
+
+After you have created a Scheduled Update Type you will then be prompted to choose the fields from your target entity type to include on your new update type.
