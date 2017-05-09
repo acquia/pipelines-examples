@@ -1,6 +1,6 @@
 # Pipelines and JavaScript Behat Tests
 
-* [Download ZIP](********** NEEDS URL **************)
+* [Download ZIP](http://tutorials.pipeline-dev.services.acquia.io/pipelinestutorial801.zip)
 
 The purpose of the 801 tutorial is to demonstrate the ability of Pipelines to support JavaScript testing.
 
