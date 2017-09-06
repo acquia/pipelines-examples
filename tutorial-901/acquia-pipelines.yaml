@@ -1,7 +1,4 @@
 version: 1.0.0
-variables:
-  global:
-    HOSTING_API_STAGE: canary
 
 events:
   build:
