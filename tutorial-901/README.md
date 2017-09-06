@@ -1,4 +1,4 @@
-# Deploying to on-demand environments
+# NodeJs Integration
 
 The nodejs platform initiative uses pipelines to build zip files of nodejs apps, then pipelines should upload them into s3, then tell Hosting API that the artifact is ready
 
@@ -9,7 +9,7 @@ To use this tutorial, the steps are:
 
 * Create a feature branch in your Git repo.
 
-* Copy the files from this directory into your repository.
+* Copy the files from this directory intos your repository.
 
 * Commit directory content to the repo and push it:
 
