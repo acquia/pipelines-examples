@@ -1,9 +1,8 @@
 # Deploying to on-demand environments
 
-The purpose of the 901 tutorial is to demonstrate how to create and upload an artifact using the command `pipelines-artifact`.
-
 The nodejs platform initiative uses pipelines to build zip files of nodejs apps, then pipelines should upload them into s3, then tell Hosting API that the artifact is ready
 
+The purpose of the 901 tutorial is to demonstrate how to create and upload an artifact using the command `pipelines-artifact`.
 
 # How to use it
 To use this tutorial, the steps are:
@@ -12,7 +11,7 @@ To use this tutorial, the steps are:
 
 * Copy the files from this directory into your repository.
 
-* Commit acquia-pipelines.yaml to the repo and push it:
+* Commit directory content to the repo and push it:
 
 ```
   git add .
