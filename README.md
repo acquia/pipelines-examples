@@ -27,5 +27,3 @@ Further examples welcome via pull request.
 * [Pipelines documentation](https://docs.acquia.com/acquia-cloud/develop/pipelines/)
 * [Introduction to Pipelines]( https://dev.acquia.com/blog/acquia-pipelines-build-test-and-deployment-automation-for-acquia-cloud/10/08/2016/16381)
 * [Acquia BLT](https://github.com/acquia/blt) includes [Pipelines integration](https://github.com/acquia/blt/blob/9.2.x/scripts/pipelines/acquia-pipelines.yml) out of the box.
-
-End of file
