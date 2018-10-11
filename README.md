@@ -2,18 +2,14 @@
 
 This repository contains example code and tutorials for Acquia Pipelines.
 
-### Examples
-* [Basic pipeline](https://github.com/acquia/pipelines-examples/tree/master/basic-pipeline)
-* [Composer based pipeline](https://github.com/acquia/pipelines-examples/tree/master/composer-pipeline)
-* [Acquia BLT](https://github.com/acquia/blt/blob/8.x/scripts/pipelines/acquia-pipelines.yml)
-* Further examples welcome via Pull Request
-
 #### Tutorials
 Each folder contains the sample code for that tutorial, plus a README that includes:
 
 * additional information and/or specific instructions,
 * a link to a ZIP file containing all the same code, for easy access, and
 * a link to a video that explains the tutorial and shows how it works.
+
+Further examples welcome via pull request.
 
 ##### The examples are:
 * **[tutorial-101](https://github.com/acquia/pipelines-examples/tree/master/tutorial-101)** - "Hello, World" the simplest possible Pipelines job, just to get started.
@@ -24,10 +20,10 @@ Each folder contains the sample code for that tutorial, plus a README that inclu
 * **[tutorial-601](https://github.com/acquia/pipelines-examples/tree/master/tutorial-601)** - Install node version manner and node package manager
 * **[tutorial-701](https://github.com/acquia/pipelines-examples/tree/master/tutorial-701)** - Deploy builds, feature branches, and GitHub pull requests to Acquia Cloud on-demand environments.
 * **[tutorial-801](https://github.com/acquia/pipelines-examples/tree/master/tutorial-801)** - Start a web and MySQL server, and run a JavaScript test against Acquia Lightning.
+* **[basic-pipeline](https://github.com/acquia/pipelines-examples/tree/master/basic-pipeline)** - Basic Drupal 7 / Drush make example.
+* **[composer-pipeline](https://github.com/acquia/pipelines-examples/tree/master/composer-pipeline)** - Simple Composer-based install.
 
 ### See also
-* [Pipelines documentation](https://docs.acquia.com/pipelines)
+* [Pipelines documentation](https://docs.acquia.com/acquia-cloud/develop/pipelines/)
 * [Introduction to Pipelines]( https://dev.acquia.com/blog/acquia-pipelines-build-test-and-deployment-automation-for-acquia-cloud/10/08/2016/16381)
-* [Request an invite to the Beta](https://dev.acquia.com/request-invite-acquia-pipelines)
-
-End of file
+* [Acquia BLT](https://github.com/acquia/blt) includes [Pipelines integration](https://github.com/acquia/blt/blob/9.2.x/scripts/pipelines/acquia-pipelines.yml) out of the box.
