@@ -63,7 +63,7 @@ To use this tutorial, the steps are:
   git commit -m 'Add Pipelines YAML file'
   git push origin pipelines-deploy
 ```
-* If you [use GitHub with Acquia Pipelines](https://docs.acquia.com/pipelines/github), a job will start immediately.  Otherwise, you can run ```pipelines start``` or click the Start Job button from the Pipelines UI.
+* If you [use GitHub with Acquia Pipelines](https://docs.acquia.com/acquia-cloud/develop/pipelines/connect/github/), a job will start immediately.  Otherwise, you can run ```pipelines start``` or click the Start Job button from the Pipelines UI.
 * When ```pipelines status``` shows the job is complete, visit your site on Acquia Cloud. A new environment named 'pipelines-build-pipelines-deploy' will exist, running the build of the pipelines-deploy branch.
 * Merge the pipelines-deploy branch into master:
 ```
