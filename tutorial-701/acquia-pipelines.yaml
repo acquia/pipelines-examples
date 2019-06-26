@@ -9,6 +9,8 @@ events:
             - touch docroot/index.html
             - echo "Pipelines examples 701. You successfully deployed your build to an ODE" > docroot/index.html
 
+  post-deploy:
+    steps:
       # Deploy the build artifact to a Cloud on-demand environment.
       - deploy:
           script:
