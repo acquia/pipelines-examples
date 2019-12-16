@@ -22,6 +22,7 @@ Further examples welcome via pull request.
 * **[tutorial-801](https://github.com/acquia/pipelines-examples/tree/master/tutorial-801)** - Start a web and MySQL server, and run a JavaScript test against Acquia Lightning.
 * **[basic-pipeline](https://github.com/acquia/pipelines-examples/tree/master/basic-pipeline)** - Basic Drupal 7 / Drush make example.
 * **[composer-pipeline](https://github.com/acquia/pipelines-examples/tree/master/composer-pipeline)** - Simple Composer-based install.
+* **[copy-files-pipeline](https://github.com/acquia/pipelines-examples/tree/master/copy-files-pipeline)** - Copy files to Acquia Cloud on-demand environments.
 
 ### See also
 * [Pipelines documentation](https://docs.acquia.com/acquia-cloud/develop/pipelines/)
