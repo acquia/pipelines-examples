@@ -1,5 +1,0 @@
-id: 'node'
-label: 'Content'
-tags:
-  title: '[node:title] | [site:name]'
-  description: '[node:summary]'

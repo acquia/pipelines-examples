@@ -1,30 +1,64 @@
-# Pipelines Examples
+# Accessing private repositories
 
-This repository contains example code and tutorials for Acquia Pipelines.
+* [Download files](http://tutorials.pipeline-dev.services.acquia.io/pipelinestutorial301.zip)
+* [Watch video](https://player.vimeo.com/video/184398695)
 
-#### Tutorials
-Each folder contains the sample code for that tutorial, plus a README that includes:
+The purpose of the 301 tutorial is demonstrate the ability to use composer to
+include a [Drupal module from a private repository](https://github.com/acquia/pipelines-examples-private) into your build
+artifact. Because the repository is private, this requires adding an SSH key
+with access to the repository to your Pipelines job.
 
-* additional information and/or specific instructions,
-* a link to a ZIP file containing all the same code, for easy access, and
-* a link to a video that explains the tutorial and shows how it works.
+This folder contains:
 
-Further examples welcome via pull request.
+* A composer.json that requires the "my_company/my_module" package, which is a
+  Drupal module, from the private-pipelines301 branch of this
+  repository. Because this is a private repository, Composer running on
+  Pipelines will not have access to it without proper authentication with an
+  SSH key.
+* An acquia-pipelines.yml file which simply runs "composer install", thus
+  attempting to pull in the branch of the private repository.
+* ssh.key, a private SSH key without a passphrase that has read access to this
+  repository. Normally, one would never commit an unencrypted SSH key to a
+  repository. We did it here to ensure this demo works for you. This repository
+  only contains sample code, and this key can only read this repository, so
+  there is no security risk.
 
-##### The examples are:
-* **[tutorial-101](https://github.com/acquia/pipelines-examples/tree/master/tutorial-101)** - "Hello, World" the simplest possible Pipelines job, just to get started.
-* **[tutorial-201](https://github.com/acquia/pipelines-examples/tree/master/tutorial-201)** - Build a Drupal site using the Acquia Lightning distribution using Composer.
-* **[tutorial-301](https://github.com/acquia/pipelines-examples/tree/master/tutorial-301)** - Access a private repository using Composer by safely adding an SSH key to your Pipelines YAML file.
-* **[tutorial-401](https://github.com/acquia/pipelines-examples/tree/master/tutorial-401)** - Safely store secret data such as credentials in your Pipelines YAML file to be accessible to your job via an environment variable.
-* **[tutorial-501](https://github.com/acquia/pipelines-examples/tree/master/tutorial-501)** - Start a web and MySQL server, and run Behat tests against your site, all within your Pipelines job.
-* **[tutorial-601](https://github.com/acquia/pipelines-examples/tree/master/tutorial-601)** - Install node version manner and node package manager
-* **[tutorial-701](https://github.com/acquia/pipelines-examples/tree/master/tutorial-701)** - Deploy builds, feature branches, and GitHub pull requests to Acquia Cloud on-demand environments.
-* **[tutorial-801](https://github.com/acquia/pipelines-examples/tree/master/tutorial-801)** - Start a web and MySQL server, and run a JavaScript test against Acquia Lightning.
-* **[basic-pipeline](https://github.com/acquia/pipelines-examples/tree/master/basic-pipeline)** - Basic Drupal 7 / Drush make example.
-* **[composer-pipeline](https://github.com/acquia/pipelines-examples/tree/master/composer-pipeline)** - Simple Composer-based install.
-* **[copy-files-pipeline](https://github.com/acquia/pipelines-examples/tree/master/copy-files-pipeline)** - Copy files to Acquia Cloud on-demand environments.
+To make this work, you will need to add the SSH key to the acquia-pipelines.yml
+file that you copy from here into your Cloud repository.  To get the files, clone this repository and look in the tutorial-301 folder, or you can [download the ZIP file here](http://tutorials.pipeline-dev.services.acquia.io/pipelinestutorial301.zip).
 
-### See also
-* [Pipelines documentation](https://docs.acquia.com/acquia-cloud/develop/pipelines/)
-* [Introduction to Pipelines]( https://dev.acquia.com/blog/acquia-pipelines-build-test-and-deployment-automation-for-acquia-cloud/10/08/2016/16381)
-* [Acquia BLT](https://github.com/acquia/blt) includes [Pipelines integration](https://github.com/acquia/blt/blob/9.2.x/scripts/pipelines/acquia-pipelines.yml) out of the box.
+The steps are:
+
+* Clear out a branch in your Acquia Cloud repo so that only the tutorial files are included.
+* Copy the files from this folder into your Cloud repository.
+* Use the ```pipelines encrypt``` command to add the SSH key to the
+acquia-pipelines.yml file:
+```
+  cat ssh.key | pipelines encrypt - --add ssh-keys.my-key
+```
+* Commit composer.json and acquia-pipelines.yml and push them to your Cloud
+repository.
+```
+  git add composer.json acquia-pipelines.yml
+  git commit -m 'demo files'
+  git push origin master
+```
+  (You do not need to commit ssh.key; you've added an encrypted
+  copy of it to acquia-pipelines.yml.)
+* Start a Pipelines job.
+```
+   pipelines start
+```
+
+If you start the job before adding the SSH key, the job will fail and the logs will show a Composer error:
+
+```
+	Failed to clone the git@github.com:acquia/pipelines-examples-private.git repository, try running in interactive mode so that you can enter your GitHub credentials
+```
+
+When the job succeeds, the job logs will show Composer pulling in the my_company/my_module package:
+
+```
+	Updating dependencies (including require-dev)
+	  - Installing my_company/my_module (dev-master 801f5a4)
+	    Cloning 801f5a4cea644ee9257c8085f4d9c6f573568d2e
+```
