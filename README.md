@@ -1,30 +1,17 @@
-# Pipelines Examples
+## Copy files from source environment to CDE created by Pipelines Job
 
-This repository contains example code and tutorials for Acquia Pipelines.
+This is a example illustrating how to copy files from any source environment to target CDE using acquia-pipelines.yaml.
 
-#### Tutorials
-Each folder contains the sample code for that tutorial, plus a README that includes:
+# How to use it
+This example assumes that you know how to automatically deploy feature
+branches and (if you use GitHub/BitBucket) pull requests to Acquia Cloud On
+Demand Environments (ODEs) using the Pipelines Deploy tool. You can find the tutorial 
+here: https://github.com/acquia/pipelines-examples/tree/master/tutorial-701.
 
-* additional information and/or specific instructions,
-* a link to a ZIP file containing all the same code, for easy access, and
-* a link to a video that explains the tutorial and shows how it works.
+The bash script `copy-files.sh` requires `CLOUD_API_KEY` and `CLOUD_API_SECRET` environment variables to make the necessary cloud API requests. Please read https://docs.acquia.com/acquia-cloud/develop/api/auth/ for more details on how to create API key/secret.
 
-Further examples welcome via pull request.
+Update the the `CLOUD_API_KEY` and `CLOUD_API_SECRET` secure variables in the acquia-pipelines.yaml. For more information on encrypting variables and adding to the pipelines yaml, read https://docs.acquia.com/acquia-cloud/develop/pipelines/encrypt/. Please make sure that the API key/secret added has the neccessary permissions for eg., copy files, get environment details. 
 
-##### The examples are:
-* **[tutorial-101](https://github.com/acquia/pipelines-examples/tree/master/tutorial-101)** - "Hello, World" the simplest possible Pipelines job, just to get started.
-* **[tutorial-201](https://github.com/acquia/pipelines-examples/tree/master/tutorial-201)** - Build a Drupal site using the Acquia Lightning distribution using Composer.
-* **[tutorial-301](https://github.com/acquia/pipelines-examples/tree/master/tutorial-301)** - Access a private repository using Composer by safely adding an SSH key to your Pipelines YAML file.
-* **[tutorial-401](https://github.com/acquia/pipelines-examples/tree/master/tutorial-401)** - Safely store secret data such as credentials in your Pipelines YAML file to be accessible to your job via an environment variable.
-* **[tutorial-501](https://github.com/acquia/pipelines-examples/tree/master/tutorial-501)** - Start a web and MySQL server, and run Behat tests against your site, all within your Pipelines job.
-* **[tutorial-601](https://github.com/acquia/pipelines-examples/tree/master/tutorial-601)** - Install node version manner and node package manager
-* **[tutorial-701](https://github.com/acquia/pipelines-examples/tree/master/tutorial-701)** - Deploy builds, feature branches, and GitHub pull requests to Acquia Cloud on-demand environments.
-* **[tutorial-801](https://github.com/acquia/pipelines-examples/tree/master/tutorial-801)** - Start a web and MySQL server, and run a JavaScript test against Acquia Lightning.
-* **[basic-pipeline](https://github.com/acquia/pipelines-examples/tree/master/basic-pipeline)** - Basic Drupal 7 / Drush make example.
-* **[composer-pipeline](https://github.com/acquia/pipelines-examples/tree/master/composer-pipeline)** - Simple Composer-based install.
-* **[copy-files-pipeline](https://github.com/acquia/pipelines-examples/tree/master/copy-files-pipeline)** - Copy files to Acquia Cloud on-demand environments.
+The source environment from where the files to be copied can be changed by updating `SOURCE_ENV_NAME` in `copy-files.sh`. 
 
-### See also
-* [Pipelines documentation](https://docs.acquia.com/acquia-cloud/develop/pipelines/)
-* [Introduction to Pipelines]( https://dev.acquia.com/blog/acquia-pipelines-build-test-and-deployment-automation-for-acquia-cloud/10/08/2016/16381)
-* [Acquia BLT](https://github.com/acquia/blt) includes [Pipelines integration](https://github.com/acquia/blt/blob/9.2.x/scripts/pipelines/acquia-pipelines.yml) out of the box.
+Note: The bash script `copy-files.sh` doesn't handle the token expiry or any API exceptions/errors.
