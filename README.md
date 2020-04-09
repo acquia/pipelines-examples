@@ -3,7 +3,7 @@
 This repository contains example code and tutorials for Acquia Pipelines.
 
 #### Tutorials
-Each folder contains the sample code for that tutorial, plus a README that includes:
+Each branch contains the sample code for that tutorial, plus a README that includes:
 
 * additional information and/or specific instructions,
 * a link to a ZIP file containing all the same code, for easy access, and
