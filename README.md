@@ -20,8 +20,6 @@ Further examples welcome via pull request.
 * **[tutorial-601](https://github.com/acquia/pipelines-examples/tree/tutorial-601)** - Install node version manner and node package manager
 * **[tutorial-701](https://github.com/acquia/pipelines-examples/tree/tutorial-701)** - Deploy builds, feature branches, and GitHub pull requests to Acquia Cloud on-demand environments.
 * **[tutorial-801](https://github.com/acquia/pipelines-examples/tree/tutorial-801)** - Start a web and MySQL server, and run a JavaScript test against Acquia Lightning.
-* **[basic-pipeline](https://github.com/acquia/pipelines-examples/tree/basic-pipeline)** - Basic Drupal 7 / Drush make example.
-* **[composer-pipeline](https://github.com/acquia/pipelines-examples/tree/composer-pipeline)** - Simple Composer-based install.
 * **[copy-files-pipeline](https://github.com/acquia/pipelines-examples/tree/copy-files-pipeline)** - Copy files to Acquia Cloud on-demand environments.
 
 ### See also
