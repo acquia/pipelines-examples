@@ -1,7 +1,7 @@
 # Encrypting data in Pipelines YAML
 
 * [Download files](http://tutorials.pipeline-dev.services.acquia.io/pipelinestutorial401.zip)
-* [Watch video](https://player.vimeo.com/video/184398697)
+* [Watch video](https://player.vimeo.com/video/444999887)
 
 This 401 tutorial shows you how to safely store encrypted data in the Pipelines YAML file so it will be accessible to your job.
 
