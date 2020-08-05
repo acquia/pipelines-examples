@@ -1,7 +1,7 @@
 # Web requests and Behat tests
 
 * [Download ZIP](http://tutorials.pipeline-dev.services.acquia.io/pipelinestutorial501.zip)
-* [Watch video](https://player.vimeo.com/video/184399322)
+* [Watch video](https://player.vimeo.com/video/444999886)
 
 The purpose of the 501 tutorial is to demonstrate the Pipelines web env and show how you can run Behat as an example use of the web
 environment.
