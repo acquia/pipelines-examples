@@ -1,7 +1,7 @@
 # Building Drupal with Composer
 
 * [Download files](http://tutorials.pipeline-dev.services.acquia.io/pipelinestutorial201.zip)
-* [Watch video](https://player.vimeo.com/video/184398693)
+* [Watch video](https://player.vimeo.com/video/444999888)
 
 This tutorial demonstrates the ability to build a Drupal site with Composer, with only the essential
 local files (e.g.: not the vendor directory or contributed modules) committed to the source branch.  It builds Acquia Lightning, based on the [Lightning Project](https://github.com/acquia/lightning-project). To use it clear out a branch in your Acquia Cloud repo so that only the tutorial files are included. Then commit all the files from this folder into your Acquia Cloud repository, push them to Cloud, then run ```pipelines start```.
