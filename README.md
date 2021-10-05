@@ -2,7 +2,7 @@
 
 * [Download ZIP](http://tutorials.pipeline-dev.services.acquia.io/pipelinestutorial801.zip)
 
-This tutorial is deprecated, since PhantomJS is no longer actively supported.
+This tutorial is deprecated, since PhantomJS and Lightning are no longer actively supported.
 
 The purpose of the 801 tutorial is to demonstrate the ability of Pipelines to support JavaScript testing.
 
