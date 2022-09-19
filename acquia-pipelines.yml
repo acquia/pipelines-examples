@@ -2,8 +2,11 @@ version: 1.0.0
 events:
   build:
     steps:
-      - hello:
+      - composer:
           type: script
           script:
-            # Try to create a docroot directory which Acquia Cloud expects to serve from. If the docroot directory already existis you will get an error in your log.
-            - echo "Hello, Pipelines!" > docroot/index.html
+            - 'composer install'
+
+ssh-keys:
+  write-key:
+    secure: 2acP1UKQFsAF0Nn1foK7x0INBs+aRtFn9Hh38EtJ3/1aEbkDrTlmwSSuRgipqE9ZgBhevkEVlOFhXWIOVj6E4hK1AyZcwrMNJJSjal68F2ejLwYlbggXIskt1nYKlE5OxgL+MlDrKKSxkss9+S5kvdrjKOkPiM6m4dwpv1wKA8EdCUf5ps8E593PzwiCc7dXUKap+uQieQnsjkbI8mDiN66WoclUH/9r1oYGmtwB7MKnVBTOQ1V2N3frzpxVzwPfglnXUWQ97SMk90pjHnznmi3orDviiTgW96+JMHf+wHrOYFm3iTuSW2vMFRDv+UgZOwSY/Zh8Qb22i52HLCCqeZ2rTVYaC16gZiI5o3gpF9WZJWWniPBEnXhjJ1aUk7/1iRRFIC4lUUdht0H8WlB+ho1frvpxyl6eIJjfjo5y88jYVvCm3kwgwgIUJLMhHmZAyO4GGK9CWuzXprHDwUmc7UMlvqOrpQaRGduxjJImfReFbz8uc/a6M2b+QntMhVHYDM6nWtLM5nWbSZgSF+y6So17RI6lZo9N3VIXX0YOXEWN7QW20Fuz7LYfswZQ2kB8R2v5jpqnID162kE/CMn+aHt6XxD6xxwW5vdASJZMEKbxrAQLLUT5Fq3Bmes9jyezYMJ0OAnWuioPikCzyhZ4Ye3UsZhh1ykOk1yS8DyFzVhWx8=txS89ljBgLB2bEGiA5Nx3Uy9Er5iVabL1dkLewwfnQqN3syFpmQLeAmC2k5xdl4TBI2ofCV9y2I0IAIX+8MmiAv83SOXPorFFg2bh7YdLjDkCFBt/OlqJtgAEkd8Em9LgXQ6ZAqW3nALrINrg/ieEq1Aj7jVdVEkMPNF9LEY8frjkLSI4GHWgC4KHZ6CrSD/aWXkeflm/VysO+TgNpUNBBGWJT9OVfuNHHWRzoNwz7x/iCeJOLjxR351udIf+edx42QgcCfX/NuJJjzKYSBPOVOxdMZUn15ZfwSkNpZM4oE0UrOW4VT19kdRtvbgTB4nwwoYzowUMzK3kHJ8YjGapjb84WcS0PFTU7ZyRDPV0YrUZV8a/290yVIhK69vgtoOqjVuWF3d4JX940+fxqG8jQAU7Eaxvatg6tLOWv50WuUC88t/LCvLKs+StOEDdiroKbM0VRYFJDF11c7IpsagdRFhU6VHS/XA2wxiq/9//RAKaHTbYrTg8k79wlZ7uRd/Pq/qGeCvu4KI9idt1SY4Rvl/rPtulk5O1s+OhTh7hoxTGh99/ZWfrHwpkrNmXWZrI+EM0d+qt8QNKHSoX5MSCk68f8V6gW1wuKhcbSvy60/Z1vD1zk0k5zWTf2FIIpA7ZXammBEJ4GgnGbbgPl69n+PS0F0KL4QCQcMNOjyPjecbfdApVXAtAfaHW8fHQ7SaV1hojfOIHZl8EhV8sc9QCrZkY8Dvn6kThFq076UkEcqC+Sq0KG0sbBxQw6p0ELvlECe7Ja8jmFGYCKSd/2hyU9ZxBHJMswj/RFIX1wdbxFpeG3Zq/QEnyJO+yq2vKUnm6oyQojuO07rHiA8NUtm7CYqfIfKCQ8f62E2HdlnrkXgxOIZq3+j8bce5mYX2AP2oJ5NY6fgzLEuybj40rJQ+qkFQ0dI3f3QjxMK0HbhxQydfnggdErolw1Q3obO7rk3DSqQKAu9TCq8f9ZG9UlbGsLEXzA36s9flHVqUDaTeufKGt23MvJZxYnWlUE81M3AvLnRmcE8f+0Ju2Erhvbx7HkH3aNVSi0y0Ij5QlBuFxeu3rhp6RFvhHChN39o5c2mJF6BEOqnxCcMArodrKCKDRGHy/Kkm8syX5MPiXWawJY7TeyBrAThtv9Iz7j9wC2hm
