@@ -1,0 +1,12 @@
+project:
+  machine_name: devx-canary
+git:
+  remotes:
+    - polarisxap14@svn-299.gardens.hosting.acquia.com:polarisxap14.git
+  hooks:
+    pre-commit: false
+    pre-push: false
+    commit-msg: false
+cm:
+  core:
+    install_from_config: true

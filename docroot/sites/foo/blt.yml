@@ -1,0 +1,9 @@
+project:
+  machine_name: foo
+  human_name: foo
+drupal:
+  db:
+    database: database
+    username: mysql
+    password: mysql
+    host: foo

@@ -1,0 +1,15 @@
+uuid: 6a97a964-668e-435b-8e35-dc50a77d07b0
+langcode: en
+status: false
+dependencies: {  }
+id: bar
+label: Bar
+description: ''
+weight: 1
+folder: ../config/bar
+module: {  }
+theme: {  }
+blacklist: {  }
+graylist: {  }
+graylist_dependents: true
+graylist_skip_equal: true

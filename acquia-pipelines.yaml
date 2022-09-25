@@ -1,19 +1,65 @@
-version: 1.0.0
+version: 1.3.0
+services:
+  - composer:
+      version: 2
+  - mysql
+  - php:
+      version: 8.0
+
+variables:
+  global:
+    COMPOSER_BIN: $SOURCE_DIR/vendor/bin
+    BLT_DIR: $SOURCE_DIR/vendor/acquia/blt
 
 events:
   build:
     steps:
-      - build:
-          script:
-            - nvm install v6.11.2
-            - nvm use 6.11.2
-            - npm install --production
-      - upload-artifact:
-          script:
-            - pipelines-artifact start
-            - pipelines-artifact upload $SOURCE_DIR
-  fail-on-build:
+        - setup-env:
+            type: script
+            script:
+              - composer validate --no-check-all --ansi
+              - composer install --ansi
+              - source ${BLT_DIR}/scripts/pipelines/setup_env
+              # - nvm install v6.9.1 --latest-npm
+              # - npm install --global yarn
+        - validate:
+            type: script
+            script:
+              - source ${BLT_DIR}/scripts/pipelines/validate
+        # Uncomment these lines to test database updates using live content.
+        # You will need to set up SSH keys for your Pipelines container:
+        # @see https://docs.acquia.com/acquia-cloud/develop/pipelines/encrypt/
+        # - test-updates:
+        #     type: script
+        #     script:
+        #       - blt drupal:sync:default:site
+        - setup-app:
+            type: script
+            script:
+              - source ${BLT_DIR}/scripts/pipelines/setup_app
+        - tests:
+            type: script
+            script:
+              - source ${BLT_DIR}/scripts/pipelines/tests
+        - build-artifact:
+            type: script
+            script:
+              - source ${BLT_DIR}/scripts/pipelines/build_artifact
+  post-deploy:
     steps:
-      - fail:
+      - deploy:
           script:
-            - pipelines-artifact fail
+            - pipelines-deploy
+            # Uncomment this line and replace DB_NAME to sync a db on deploys.
+            # @see https://docs.acquia.com/acquia-cloud/develop/pipelines/databases/
+            # - pipelines-sync-dbs DB_NAME
+  pr-merged:
+    steps:
+      - deploy:
+          script:
+            - pipelines-deploy
+  pr-closed:
+    steps:
+      - deploy:
+          script:
+            - pipelines-deploy

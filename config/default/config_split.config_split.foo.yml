@@ -1,0 +1,15 @@
+uuid: 6a970964-668e-435b-8e35-dc50a77d07ba
+langcode: en
+status: false
+dependencies: {  }
+id: foo
+label: Foo
+description: ''
+weight: 1
+folder: ../config/foo
+module: {  }
+theme: {  }
+blacklist: {  }
+graylist: {  }
+graylist_dependents: true
+graylist_skip_equal: true
