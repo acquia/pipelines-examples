@@ -10,3 +10,7 @@ git:
 cm:
   core:
     install_from_config: true
+disable-targets:
+  tests:
+    security-drupal: true
+    security-composer: true
