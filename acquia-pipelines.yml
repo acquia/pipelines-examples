@@ -7,12 +7,3 @@ events:
           script:
             # Try to create a docroot directory which Acquia Cloud expects to serve from. If the docroot directory already existis you will get an error in your log.
             - echo "Hello, Pipelines!" > docroot/index.html
-            - nvm list
-            - node -v
-            - nvm install 16
-            - nvm use 16
-            - node -v 
-            - npm -v 
-            - nvm use 18.12.1
-            - node -v
-            - npm -v
