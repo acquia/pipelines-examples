@@ -7,3 +7,4 @@ events:
           script:
             - nvm list
             - node -v
+            - gem install saas
