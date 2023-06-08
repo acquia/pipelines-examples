@@ -7,4 +7,5 @@ events:
           script:
             - nvm list
             - node -v
+            - source /usr/local/rvm/scripts/rvm
             - gem install saas
