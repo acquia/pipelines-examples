@@ -7,7 +7,6 @@ events:
           script:
             - nvm list
             - node -v
-            - gem install saas
             - nvm install 16
             - nvm install 15
             - nvm install 14
