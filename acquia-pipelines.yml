@@ -8,5 +8,7 @@ events:
             - nvm list
             - node -v
             - nvm install 16
+            - sleep 180
             - nvm install 15
+            - sleep 180
             - nvm install 14
