@@ -7,3 +7,4 @@ events:
           script:
             - nvm list
             - echo "Auto Trigger Test"
+            - composer --version
