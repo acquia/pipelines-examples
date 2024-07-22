@@ -10,3 +10,4 @@ events:
             - node --version
             - nvm use 20
             - node --version
+            - sysctl crypto.fips_enabled
