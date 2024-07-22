@@ -6,7 +6,5 @@ events:
           type: script
           script:
             - nvm list
-            - echo "Auto Trigger Test"
-            - composer --version
-            - sleep 600
-            - echo "Sleep over"
+            - nvm use 18
+            - node --version
