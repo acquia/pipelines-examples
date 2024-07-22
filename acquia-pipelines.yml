@@ -8,3 +8,5 @@ events:
             - nvm list
             - nvm use 18
             - node --version
+            - nvm use 20
+            - node --version
