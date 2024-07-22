@@ -11,3 +11,4 @@ events:
             - nvm use 20
             - node --version
             - sysctl crypto.fips_enabled
+            - openssl --version
