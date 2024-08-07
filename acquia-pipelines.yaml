@@ -9,7 +9,7 @@ events:
             - mkdir docroot
             - touch docroot/index.html
             - echo "Pipelines examples 701. You successfully deployed your build to an ODE" > docroot/index.html
-            - echo "Trigger Deploy 002"
+            - echo "Trigger Deploy 003"
 
   post-deploy:
     steps:
