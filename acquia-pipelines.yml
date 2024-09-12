@@ -5,6 +5,6 @@ events:
       - hello:
           type: script
           script:
-            - sudo /etc/init.d/mysql status
-            - sudo /etc/init.d/mysql start
+            - echo "About to start database"
+            - sudo /etc/init.d/mysql start -vvv
             - echo "Unable to start database"
