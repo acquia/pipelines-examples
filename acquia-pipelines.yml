@@ -5,6 +5,4 @@ events:
       - hello:
           type: script
           script:
-            - echo "About to start database"
-            - sudo /etc/init.d/mysql start -vvv
-            - echo "Unable to start database"
+            - sleep 600
