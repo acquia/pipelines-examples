@@ -7,3 +7,4 @@ events:
           script:
             - sudo /etc/init.d/mysql status
             - sudo /etc/init.d/mysql start
+            - echo "Unable to start database"
