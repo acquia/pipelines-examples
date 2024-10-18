@@ -5,4 +5,4 @@ events:
       - hello:
           type: script
           script:
-            - sleep 600
+            - echo "Success"
